@@ -1,0 +1,13 @@
+html, body, #map {
+    height:100%;
+    box-sizing: content-box;
+}
+
+#map-container {
+    height:100%;
+}
+
+#map-container div {
+    height:100%!important;
+}
+
