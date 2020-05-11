@@ -4,46 +4,50 @@ import { Observable, from, of } from 'rxjs';
 import { Feed, StationInfo, StationStatus } from './response-interfaces';
 import { filter, map, find, mergeMap } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
+import { System } from './system.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class BikeshareDataServiceService {
+export class BikeshareDataService {
   private feeds: Observable<Feed[]>;
+  private selectedSystem: System;
 
   constructor(private http: HttpClient) { }
 
   bay_area_url = 'https://gbfs.baywheels.com/gbfs/gbfs.json'
 
-  getFeedFromDiscovery(systemID, feed_name): Observable<string> {
-      return this.http.get(this.bay_area_url, {responseType:'json'}).pipe(
+  getFeedFromDiscovery(feedName): Observable<string> {
+      return this.http.get(this.selectedSystem.discoveryUrl, {responseType:'json'}).pipe(
               map(x => x['data']['en']['feeds']),
-              map(feeds => feeds.filter((feed: Feed)=> feed.name === feed_name)[0].url)
+              map(feeds => feeds.filter((feed: Feed)=> feed.name === feedName)[0].url)
               // map(x => this.feeds = x)
               );
   }
 
-  // getUrl(feed_name): Observable<Feed> {
-  //   return from(this.getFeedsFromDiscovery('whatever')
-  //       .toPromise()
-  //       .then(() => this.feeds.pipe(map(feeds => feeds.filter((feed: Feed)=> feed.name === feed_name)))[0]));
-  // }
-    //return next(i for i in requests.get(bay_area_url).json()['data']['en']['feeds'] if i['name'] == feed_name)['url']
+  setSystem(sys: System){
+    console.log('system set:', sys)
+    this.selectedSystem = sys;
+  }
 
-  all_systems(){
-    return ""
+  getSystem():System {
+    return this.selectedSystem;
+  }
+
+  // returns only unsanitized csv string
+  all_systems(): Observable<string>{
+    return this.http.get('https://raw.githubusercontent.com/NABSA/gbfs/master/systems.csv', {responseType: 'text'});
   }
 
   station_info(systemID): Observable<StationInfo[]> {
-    return this.getFeedFromDiscovery('pl', 'station_information')
+    return this.getFeedFromDiscovery('station_information')
         .pipe(mergeMap(feed => this.http.get(feed, {responseType:'json'})),
               map(x => x['data']['stations']));
   }
-    // #todo filter station data to include only necessary info
 
   station_status(sysID): Observable<StationStatus[]>{
-    return this.getFeedFromDiscovery('pl', 'station_status')
+    return this.getFeedFromDiscovery('station_status')
         .pipe(mergeMap(feed => this.http.get(feed, {responseType:'json'})),
               map(x => x['data']['stations']));
   }

@@ -1,13 +1,9 @@
-<head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-
-  </head>
-  <body>
-
-    <div id="map-container">
-      <div #map style=”width:100%;height:400px”></div>
-    </div>
-    
-  </body>
+<mat-toolbar>
+  <span>Bikeshare :)</span>
+</mat-toolbar>
+<ng-container *ngIf="!_mapToggle">
+  <app-search (switchToMap)="_mapToggle=true"></app-search>
+</ng-container>
+<ng-container *ngIf="_mapToggle">
+  <app-map (switchToSearch)="_mapToggle=false"></app-map>
+</ng-container>
