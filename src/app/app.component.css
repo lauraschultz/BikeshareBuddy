@@ -1,0 +1,21 @@
+.container {
+    height:100%;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-flow: column;
+}
+
+.navbar {
+    flex: 0 1 auto;
+}
+
+.content {
+    flex: 1 1 auto;
+    background-image: url('../assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}

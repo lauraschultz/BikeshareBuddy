@@ -1,9 +1,10 @@
-<mat-toolbar>
-  <span>Bikeshare :)</span>
+<div class="container">
+  <div class="row navbar">
+    <mat-toolbar>
+  <span><a routerLink=''>BikeshareBuddy</a></span>
 </mat-toolbar>
-<ng-container *ngIf="!_mapToggle">
-  <app-search (switchToMap)="_mapToggle=true"></app-search>
-</ng-container>
-<ng-container *ngIf="_mapToggle">
-  <app-map (switchToSearch)="_mapToggle=false"></app-map>
-</ng-container>
+  </div>
+  <div class="row content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

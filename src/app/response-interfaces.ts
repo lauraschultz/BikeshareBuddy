@@ -1,3 +1,5 @@
+import { Time } from '@angular/common';
+
 export interface Feed {
     name: string;
     url: string;
@@ -16,4 +18,5 @@ export interface StationStatus {
     is_returning: number;
     num_docks_available: number;
     num_bikes_available: number;
+    last_reported: Time;
 }

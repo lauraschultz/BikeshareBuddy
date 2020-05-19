@@ -1,23 +1,25 @@
 <mat-card>
     <mat-card-title>
-        Search for a System
+        <i class="material-icons">search</i>Search for a System
     </mat-card-title>
     <div>
-        Search by system name (eg "Nice Ride") or location (eg "Minneapolis"). Searching by country is not currently supported.
+        Search by system name <span class="light">(eg "Nice Ride")</span> or location <span class="light">(eg "Minneapolis")</span>. Searching by country is not currently supported.
     </div>
     <div>
         <mat-form-field style="width:100%">
             <mat-label>Search</mat-label>
             <input type="text" (keyup)="runSearch($event)" matInput>
-                
         </mat-form-field>
-        <mat-option *ngFor="let sys of searchResults" (click)="setSystem(sys)">
-            <span>{{sys.systemName}}</span> |
-            <small>{{sys.location}}</small>
-          </mat-option>
+        <div class="search-results">
+            <div *ngFor="let sys of searchResults" class="result" (click)="selectedSystem=sys" [class.selected]="selectedSystem === sys">
+                <span>{{sys.systemName}}</span> |
+                <small>{{sys.location}}</small>
+            </div>
+        </div>
     </div>
     <div>
         <button mat-raised-button (click)="continue()">Next</button>
+        <span *ngIf="errorSelectSystem">Please select a system before continuing.</span>
     </div>
     
 

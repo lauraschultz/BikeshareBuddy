@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LiveSearchService } from '../live-search.service';
 import { System } from '../system.model';
 import { BikeshareDataService } from '../bikeshare-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,31 +12,33 @@ import { BikeshareDataService } from '../bikeshare-data.service';
 export class SearchComponent implements OnInit {
   @Output() switchToMap  = new EventEmitter<boolean>()
   searchResults: System[];
+  errorSelectSystem = false;
+  selectedSystem: System;
 
   constructor(private liveSearchService: LiveSearchService,
-    private bikeshareDataService: BikeshareDataService) { }
+    private bikeshareDataService: BikeshareDataService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.liveSearchService.populateSystemArray();
-    // console.log(this.liveSearchService.getAllMatches('careem'));
-    // console.log(this.liveSearchService.match(new System({
-    //   systemName: 'Test',
-    //   location: 'whatever'
-    // }), 'test'))
+    this.bikeshareDataService.getSystemsArray().subscribe();
   }
 
   runSearch(event: any){
-    this.searchResults = this.liveSearchService.getAllMatches(event.target.value);
-  }
-
-  setSystem(sys:System) {
-    this.bikeshareDataService.setSystem(sys);
+    this.searchResults = this.liveSearchService.getAllMatches(event.target.value).filter(sys => sys !== this.selectedSystem);
+    if(this.selectedSystem){this.searchResults.unshift(this.selectedSystem);}    // selected always shows up first in results
+    console.log(this.searchResults);
   }
 
   continue() {
-    if(this.bikeshareDataService.getSystem()){
-      this.switchToMap.emit(true);
-    }
+    if(this.selectedSystem){
+      // system has been selected
+      this.bikeshareDataService.setSelectedSystem(this.selectedSystem);
+      this.router.navigate(['map', this.bikeshareDataService.getSelectedSystem().systemID])
+    } else {
+      // system has not been selected, show error
+      this.errorSelectSystem = true;
+    } 
   }
 
 }

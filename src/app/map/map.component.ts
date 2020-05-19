@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { StationInfo, StationStatus } from '../response-interfaces';
 import { BikeshareDataService } from '../bikeshare-data.service';
 import { Marker } from '../marker.Model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -13,26 +14,60 @@ export class MapComponent implements OnInit {
   title = 'bikeshare';
   private station_info: StationInfo[];
   private station_status: StationStatus[];
-  private current_system = 'BA';
+  private current_system:string;
   private info_window = new google.maps.InfoWindow({content: ''});
   @ViewChild('map', {static:true}) mapElement: any;
   map: google.maps.Map;
   markers = {};
+  pageLoading = true;
 
-  constructor(private bikeshareDataService: BikeshareDataService){}
+  constructor(private bikeshareDataService: BikeshareDataService,private route: ActivatedRoute,
+    private router: Router){}
 
   ngOnInit(){
-    this.getStationInfo('fakeID');
+    this.current_system = this.route.snapshot.paramMap.get('systemID');
+    console.log('the system id is ' + this.current_system);
+    if(!this.bikeshareDataService.getSelectedSystem()){
+      // current system not set
+      this.bikeshareDataService.setSystemByID(this.current_system).subscribe(() => this.getStationInfo());
+      // console.log('now current system is ' + this.bikeshareDataService.getSelectedSystem());
+    } else {
+    this.getStationInfo();}
+    
   }
 
   generateInfoWindowHTML(title, empty, full):string {
+    let emptyToDisplay;
+    let fullToDisplay;
+    const cutoff = 8;
+    const moreTextWidth = 2;  // dont display more text if just displaying slots is less space
+    if(empty < cutoff || (empty-cutoff) < moreTextWidth) {
+      // display everything
+      emptyToDisplay = empty;
+    } else {
+      emptyToDisplay = cutoff;
+    }
+    if(full < cutoff || (full-cutoff) < moreTextWidth) {
+      // display everything
+      fullToDisplay = full;
+    } else {
+      fullToDisplay = cutoff;
+    }
     let newHTML = '<div class="infoWindow"><h2>'+title+'</h2>';
-    for(let i=0; i<+full; i++){
+    for(let i=0; i<fullToDisplay; i++){
       newHTML += '<span class="full"></span>';
     }
-    for(let i=0; i<+empty; i++){
-      newHTML += '<span class="empty"></span>';
-    }
+    newHTML += (fullToDisplay==full ? '' :
+      '<span class="full moretxt"><i class="material-icons">add_circle_outline</i> ' + (full-fullToDisplay) + '</span>');
+
+      for(let i=0; i<emptyToDisplay; i++){
+        newHTML += '<span class="empty"></span>';
+      }
+      newHTML += (emptyToDisplay==empty ? '' :
+        '<span class="empty moretxt"><i class="material-icons">add_circle_outline</i>' + (empty-emptyToDisplay) + '</span>');
+    
+
+
     newHTML += '</div>';
     return newHTML
   }
@@ -50,7 +85,7 @@ export class MapComponent implements OnInit {
   }
 
   generateMap() {
-    const center = this.calculateCenter()
+    const center = this.calculateCenter();
     const mapProperties = {
       center: new google.maps.LatLng(center[0], center[1]),
       zoom: 10,
@@ -84,28 +119,28 @@ export class MapComponent implements OnInit {
       })
   }
 
-  getStationInfo(sysID: string) {
-    this.bikeshareDataService.station_info(sysID)
+  getStationInfo() {
+    this.bikeshareDataService.getStationInfo()
       .subscribe(x =>
         {
           console.log('got station info:', x);
           this.station_info = x;
-          this.getStationStatus(sysID);
+          this.getStationStatus();
           if(!this.map){
             this.generateMap();
           }
         });
   }
 
-  getStationStatus(sysID: string) {
-    this.bikeshareDataService.station_status(sysID)
+  getStationStatus() {
+    this.bikeshareDataService.getStationStatus()
       .subscribe(x => 
         {
-          console.log('got station status', x);
+          console.log('got station status:', x);
           this.station_status = x;
-          console.log(this.station_status);
           this.addMarkers();
           this.addInfoWindows();
+          this.pageLoading = false;
         });
   }
 }

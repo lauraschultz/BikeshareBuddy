@@ -1,0 +1,25 @@
+mat-card {
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:80px;
+}
+
+.search-results {
+    max-height:300px;
+    overflow-y: scroll;
+}
+
+.search-results .result {
+    padding: 10px;
+}
+
+.search-results .result.selected {
+    background-color: black;
+    color:white;
+}
+
+.light {
+    color: gray;
+    font-style:italic;
+}

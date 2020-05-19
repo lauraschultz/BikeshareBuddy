@@ -17,10 +17,13 @@ html, body {
 }
 
 .infoWindow .empty, .infoWindow .full {
-    padding:2px 6px;
+    height:18px;
+    width:10px;
     border-radius: 100%;
     box-sizing: content-box;
+    display: inline-block;
     margin:1px;
+    vertical-align: middle;
 }
 
 .infoWindow .empty {
@@ -28,9 +31,29 @@ html, body {
     border: 2px solid black;
 }
 
+.infoWindow .moretxt {
+    padding:0;
+    border-radius: 5px;
+    width:auto;
+    font-weight: bold;
+}
+
+.infoWindow span.empty.moretxt {
+    color:black;
+}
+
 .infoWindow .full {
     background-color: navy;
     border: 2px solid navy;
+}
+
+.infoWindow span.full.moretxt {
+    color:white;
+}
+
+.infoWindow .moretxt i.material-icons {
+    font-size: 12px;
+    vertical-align: middle!important;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
