@@ -27,7 +27,6 @@ export class SearchComponent implements OnInit {
   runSearch(event: any){
     this.searchResults = this.liveSearchService.getAllMatches(event.target.value).filter(sys => sys !== this.selectedSystem);
     if(this.selectedSystem){this.searchResults.unshift(this.selectedSystem);}    // selected always shows up first in results
-    console.log(this.searchResults);
   }
 
   continue() {

@@ -3,6 +3,7 @@ import { StationInfo, StationStatus } from '../response-interfaces';
 import { BikeshareDataService } from '../bikeshare-data.service';
 import { Marker } from '../marker.Model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-map',
@@ -33,42 +34,83 @@ export class MapComponent implements OnInit {
       // console.log('now current system is ' + this.bikeshareDataService.getSelectedSystem());
     } else {
     this.getStationInfo();}
-    
   }
 
-  generateInfoWindowHTML(title, empty, full):string {
-    let emptyToDisplay;
-    let fullToDisplay;
-    const cutoff = 8;
-    const moreTextWidth = 2;  // dont display more text if just displaying slots is less space
-    if(empty < cutoff || (empty-cutoff) < moreTextWidth) {
-      // display everything
-      emptyToDisplay = empty;
-    } else {
-      emptyToDisplay = cutoff;
+  getSlots(station: StationStatus): StationDockInfo {
+    const max = 12;
+    const cutoff = 2;
+    const total = station.num_bikes_available+station.num_docks_available;
+    let empty = Math.floor((station.num_docks_available/total)*max);
+    let full = Math.floor((station.num_bikes_available/total)*max);
+    if((station.num_bikes_available-full) <= cutoff){
+      full = station.num_bikes_available;
     }
-    if(full < cutoff || (full-cutoff) < moreTextWidth) {
-      // display everything
-      fullToDisplay = full;
-    } else {
-      fullToDisplay = cutoff;
+    if((station.num_docks_available-empty) <= cutoff){
+      empty = station.num_docks_available;
     }
-    let newHTML = '<div class="infoWindow"><h2>'+title+'</h2>';
-    for(let i=0; i<fullToDisplay; i++){
+    return new StationDockInfo({
+      empty: empty,
+      full: full,
+      extraEmpty: station.num_docks_available - empty,
+      extraFull: station.num_bikes_available - full
+    })
+  }
+
+  timeFormat(date:Date):string {
+    const now = new Date();
+    date = new Date((+date*1000));
+    const timeAgo = now.getTime() - date.getTime();
+    if(timeAgo < 1000*60){              // one minute
+      return '<1 minute ago';
+    }
+    if(timeAgo < 1000*60*60){           // one hour
+      const mins = Math.floor(timeAgo/(1000*60))
+      return  mins + ' min' + (mins==1 ? '' : 's') + ' ago';
+    }
+    if(timeAgo < 1000*60*60*24){        // one day
+      const hours = Math.floor(timeAgo/(1000*60*60))
+      return  hours + ' hour' + (hours==1 ? '' : 's') + ' ago';
+    }
+    if(timeAgo < 1000*60*60*24*30){     // one month
+      const days = Math.floor(timeAgo/(1000*60*60*24))
+      return  days + ' day' + (days==1 ? '' : 's') + ' ago';
+    }
+    if(timeAgo < 1000*60*60*24*365){    // one year
+      const months = Math.floor(timeAgo/(1000*60*60*24*30))
+      return  months + ' day' + (months==1 ? '' : 's') + ' ago';
+    }
+    const years = Math.floor(timeAgo/(1000*60*60*24*365))
+    return years + ' year' + (years==1 ? '' : 's') + ' ago';
+  }
+
+  generateInfoWindowHTML(title:string, station:StationStatus):string {
+    const docks = this.getSlots(station);
+    let newHTML = '<div class="infoWindow"><h3>'+title+'</h3>';
+    if(!(station.is_renting && station.is_returning)) {
+      newHTML += '<div class="warning"><i class="material-icons">warning</i>&nbsp;Not currently ';
+      if(!station.is_renting && !station.is_returning) {
+        newHTML += 'renting bikes or accepting bike returns';
+      } else if (!station.is_renting) {
+        newHTML += 'renting bikes';
+      } else {
+        newHTML += 'accepting bike returns';
+      }
+      newHTML+= '</div>';
+    }
+    newHTML += '<div class="cont">';
+    for(let i=0; i<docks.full; i++){
       newHTML += '<span class="full"></span>';
     }
-    newHTML += (fullToDisplay==full ? '' :
-      '<span class="full moretxt"><i class="material-icons">add_circle_outline</i> ' + (full-fullToDisplay) + '</span>');
-
-      for(let i=0; i<emptyToDisplay; i++){
-        newHTML += '<span class="empty"></span>';
-      }
-      newHTML += (emptyToDisplay==empty ? '' :
-        '<span class="empty moretxt"><i class="material-icons">add_circle_outline</i>' + (empty-emptyToDisplay) + '</span>');
+    newHTML += (docks.extraFull>0 ? '<span class="full moretxt"><i class="material-icons">add_circle_outline</i>' + docks.extraFull + '</span>': '');
     
-
-
-    newHTML += '</div>';
+    for(let i=0; i<docks.empty; i++){
+      newHTML += '<span class="empty"></span>';
+    }
+    newHTML += (docks.extraEmpty>0 ? '<span class="empty moretxt"><i class="material-icons">add_circle_outline</i>' + docks.extraEmpty + '</span>': '');
+    
+    newHTML += '</div><div class="footer"><div>' + station.num_bikes_available + ' available bike' + (station.num_bikes_available==1 ? '' : 's') + '</div>';
+    newHTML += '<div>' + station.num_docks_available + ' available dock' + (station.num_docks_available==1 ? '' : 's') + '</div>';
+    newHTML += '<div class="timestamp"><i class="material-icons">watch_later</i>&nbsp;Last updated ' + this.timeFormat(station.last_reported) + '</div></div></div>';
     return newHTML
   }
 
@@ -97,6 +139,7 @@ export class MapComponent implements OnInit {
   addMarkers(){
     let markerProperties = {
       map: this.map
+      // icon: '../../assets/place-24px.png'
     }
     this.station_info.forEach(station => 
         {
@@ -113,17 +156,17 @@ export class MapComponent implements OnInit {
         var _this = this;
         google.maps.event.addListener(marker.marker, 'click', function() {
           _this.info_window.close();
-          _this.info_window.setContent(_this.generateInfoWindowHTML(marker.name, station.num_docks_available, station.num_bikes_available));
+          _this.info_window.setContent(_this.generateInfoWindowHTML(marker.name, station));
           _this.info_window.open(_this.map, marker.marker);
         }); 
       })
   }
 
   getStationInfo() {
-    this.bikeshareDataService.getStationInfo()
+    this.bikeshareDataService.getSystemFeed('station_information')
       .subscribe(x =>
         {
-          console.log('got station info:', x);
+          // console.log('got station info:', x);
           this.station_info = x;
           this.getStationStatus();
           if(!this.map){
@@ -133,14 +176,25 @@ export class MapComponent implements OnInit {
   }
 
   getStationStatus() {
-    this.bikeshareDataService.getStationStatus()
+    this.bikeshareDataService.getSystemFeed('station_status')
       .subscribe(x => 
         {
-          console.log('got station status:', x);
+          // console.log('got station status:', x);
           this.station_status = x;
           this.addMarkers();
           this.addInfoWindows();
           this.pageLoading = false;
         });
+  }
+}
+
+export class StationDockInfo {
+  full: number;
+  extraFull: number;
+  empty: number;
+  extraEmpty: number;
+
+    public constructor(init?:Partial<StationDockInfo>) {
+      Object.assign(this, init);
   }
 }

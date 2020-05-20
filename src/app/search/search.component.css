@@ -8,6 +8,7 @@ mat-card {
 .search-results {
     max-height:300px;
     overflow-y: scroll;
+    padding:5px;
 }
 
 .search-results .result {
@@ -22,4 +23,15 @@ mat-card {
 .light {
     color: gray;
     font-style:italic;
+}
+
+.error-text {
+    padding:10px;
+    font-size: small;
+    color:red;
+}
+
+button.next-button {
+    margin-left:auto;
+    margin-right: auto;
 }

@@ -6,3 +6,9 @@
     height:100%!important;
 }
 
+.loading-spinner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:60px;
+}
+

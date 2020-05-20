@@ -2,24 +2,30 @@ html, body {
     height:100%
 }
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .infoWindow {
-    text-align: center;
+    text-align:center;
 }
 
-.infoWindow h2 {
-    font-size:12px;
+.infoWindow h3 {
     margin-top:0;
 }
 
-.infoWindow .cont {
-    margin-left: auto;
-    margin-right: auto;
+.infoWindow .warning {
+    color:red;
+    padding-bottom:8px;
+}
+
+.material-icons {
+    vertical-align: middle!important;
 }
 
 .infoWindow .empty, .infoWindow .full {
     height:18px;
     width:10px;
-    border-radius: 100%;
+    border-radius: 40%;
     box-sizing: content-box;
     display: inline-block;
     margin:1px;
@@ -32,10 +38,14 @@ html, body {
 }
 
 .infoWindow .moretxt {
-    padding:0;
+    padding:0 2px 0 0;
     border-radius: 5px;
     width:auto;
     font-weight: bold;
+}
+
+.infoWindow .moretxt i{
+    font-size: smaller;
 }
 
 .infoWindow span.empty.moretxt {
@@ -51,9 +61,19 @@ html, body {
     color:white;
 }
 
-.infoWindow .moretxt i.material-icons {
-    font-size: 12px;
-    vertical-align: middle!important;
+.infoWindow .footer {
+    margin: 10px 10px 0 10px;
+    text-align:left;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.infoWindow .timestamp {
+    color:gray;
+    font-style: italic;
+    font-size: smaller;
+    padding-top:3px;
+}
+
+.infoWindow .timestamp i{
+    font-size: small;
+}
+

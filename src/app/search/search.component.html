@@ -18,8 +18,8 @@
         </div>
     </div>
     <div>
-        <button mat-raised-button (click)="continue()">Next</button>
-        <span *ngIf="errorSelectSystem">Please select a system before continuing.</span>
+        <button mat-raised-button (click)="continue()" class="next-button">Next</button>
+        <span *ngIf="errorSelectSystem" class="error-text">Please select a system before continuing.</span>
     </div>
     
 
