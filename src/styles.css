@@ -5,8 +5,21 @@ html, body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+mat-card.with-max {
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:80px;
+}
+
+
+.gm-style-iw, .gm-style-iw-c {
+    max-width: none!important; 
+  }
+
 .infoWindow {
     text-align:center;
+    padding:0 12px 12px 0;
 }
 
 .infoWindow h3 {

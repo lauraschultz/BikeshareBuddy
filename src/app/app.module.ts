@@ -12,12 +12,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import { AppRoutingModule } from './app-routing.module';
+import { ErrorCardComponent } from './error-card/error-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    MapComponent
+    MapComponent,
+    ErrorCardComponent
   ],
   imports: [
     BrowserModule,

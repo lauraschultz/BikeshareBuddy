@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
   map: google.maps.Map;
   markers = {};
   pageLoading = true;
+  showErrorCard = false;
 
   constructor(private bikeshareDataService: BikeshareDataService,private route: ActivatedRoute,
     private router: Router){}
@@ -37,7 +38,7 @@ export class MapComponent implements OnInit {
   }
 
   getSlots(station: StationStatus): StationDockInfo {
-    const max = 12;
+    const max = 15;
     const cutoff = 2;
     const total = station.num_bikes_available+station.num_docks_available;
     let empty = Math.floor((station.num_docks_available/total)*max);
@@ -172,7 +173,8 @@ export class MapComponent implements OnInit {
           if(!this.map){
             this.generateMap();
           }
-        });
+        },
+        err => this.handleError());
   }
 
   getStationStatus() {
@@ -184,7 +186,13 @@ export class MapComponent implements OnInit {
           this.addMarkers();
           this.addInfoWindows();
           this.pageLoading = false;
-        });
+        },
+        err => this.handleError());
+  }
+
+  handleError() {
+    this.pageLoading = false;
+    this.showErrorCard = true;
   }
 }
 

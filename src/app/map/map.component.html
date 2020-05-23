@@ -1,5 +1,8 @@
 <mat-spinner *ngIf="pageLoading" class="loading-spinner"></mat-spinner>
+<ng-container *ngIf="showErrorCard">
+  <app-error-card></app-error-card>
+</ng-container>
 
 <div id="map-container">
-      <div #map style=”width:100%;height:400px”></div>
+      <div #map></div>
     </div>
