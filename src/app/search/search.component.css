@@ -1,7 +1,7 @@
 .search-results {
-    max-height:300px;
+    max-height:200px;
     overflow-y: scroll;
-    padding:5px;
+    margin: -20px 0px 10px 0px;
 }
 
 .search-results .result {
@@ -9,22 +9,32 @@
 }
 
 .search-results .result.selected {
-    background-color: black;
-    color:white;
+    background-color: var(--result-highlight);
+    color:var(--light);
 }
 
 .light {
-    color: gray;
+    color: var(--text-gray);
     font-style:italic;
 }
 
 .error-text {
     padding:10px;
     font-size: small;
-    color:red;
+    color:var(--error-red);
 }
 
 button.next-button {
-    margin-left:auto;
-    margin-right: auto;
+    /* margin-left:auto;
+    margin-right: auto; */
+    display:block;
+    width:100%;
+    background-color: var(--navbar-dark);
+    color: var(--light);
+}
+
+@media only screen and (min-width: 600px) {
+    .search-results {
+        max-height: 300px;
+    }
 }

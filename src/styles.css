@@ -1,3 +1,13 @@
+:root {
+    /* global color vars */
+    --navbar-dark: #323a4a;
+    --result-highlight: #441461;
+    --light: #f0f0f0;
+    --error-red: #e02020;
+    --text-gray: #909090;
+    --background-gradient: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+}
+
 html, body {
     height:100%
 }
@@ -6,10 +16,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card.with-max {
-    max-width:500px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:80px;
+    margin: 5px;
 }
 
 
@@ -27,7 +34,7 @@ mat-card.with-max {
 }
 
 .infoWindow .warning {
-    color:red;
+    color:var(--error-red);
     padding-bottom:8px;
 }
 
@@ -71,7 +78,7 @@ mat-card.with-max {
 }
 
 .infoWindow span.full.moretxt {
-    color:white;
+    color:var(--light);
 }
 
 .infoWindow .footer {
@@ -80,7 +87,7 @@ mat-card.with-max {
 }
 
 .infoWindow .timestamp {
-    color:gray;
+    color:var(--text-gray);
     font-style: italic;
     font-size: smaller;
     padding-top:3px;
@@ -90,3 +97,12 @@ mat-card.with-max {
     font-size: small;
 }
 
+@media only screen and (min-width: 600px) {
+    mat-card.with-max{
+        margin-top:80px;
+        max-width:450px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    
+}

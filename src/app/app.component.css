@@ -12,10 +12,60 @@
     flex: 0 1 auto;
 }
 
-.content {
+.navbar .mat-toolbar-single-row {
+    height:auto!important;
+    padding:5px 10px!important;
+}
+
+#content {
     flex: 1 1 auto;
-    background-image: url('../assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
+    background-image: var(--background-gradient);
+}
+
+mat-toolbar {
+    background-color: var(--navbar-dark);
+}
+
+.navbar-logo {
+    height:50px;
+}
+
+.navbar a{
+    margin-bottom: -6px;  /* why does it do this :( */
+}
+
+#footer {
+    display:none;
+}
+
+@media only screen and (min-width: 600px) {
+    #content {
+        /* background-image: url('../assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg'); */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+    
+    .navbar-logo {
+        height:65px;
+    }
+
+    .navbar .mat-toolbar-single-row {
+        padding:10px 16px!important;
+    }
+
+    #footer {
+        display: inline;
+        padding:20px;
+    }
+
+    #footer #attribution {
+        float:right;
+        font-size: small;
+        color: var(--navbar-dark);
+    }
+
+    #footer #attribution a:link, #footer #attribution a:visited, #footer #attribution a:hover, #footer #attribution a:active {
+        color:var(--navbar-dark);
+    }
 }

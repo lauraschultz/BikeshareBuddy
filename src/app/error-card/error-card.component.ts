@@ -27,7 +27,6 @@ export class ErrorCardComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
-    this.numSeconds = 10;
     const _this = this;
     this.runCountdown = setInterval(function(){_this.updateSeconds()}, 1000);
   }
