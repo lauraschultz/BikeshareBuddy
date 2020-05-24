@@ -6,6 +6,7 @@
     --error-red: #e02020;
     --text-gray: #909090;
     --background-gradient: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+    --desktop-breakpoint: 600px;
 }
 
 html, body {

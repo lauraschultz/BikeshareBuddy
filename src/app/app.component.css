@@ -28,6 +28,7 @@ mat-toolbar {
 
 .navbar-logo {
     height:50px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 .navbar a{
@@ -65,7 +66,8 @@ mat-toolbar {
         color: var(--navbar-dark);
     }
 
-    #footer #attribution a:link, #footer #attribution a:visited, #footer #attribution a:hover, #footer #attribution a:active {
+    #footer #attribution a {
         color:var(--navbar-dark);
+        text-decoration: none;
     }
 }

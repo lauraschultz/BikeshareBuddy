@@ -20,7 +20,8 @@ makeBackground():void {
       document.getElementById('content').style.backgroundImage = "url('"+ backgrounds[photo_id].url+"')";
       document.getElementById('attribution').innerHTML = 
         '<i class="material-icons" style="font-size:small">panorama</i>&nbsp;Background image: '+
-        '<a target="_blank" href="'+backgrounds[photo_id].hyperlink+'">'+
+        '<a style="color: var(--navbar-dark);text-decoration: none;border-bottom: 1.5px solid;padding: 0px 2px;" target="_blank" href="'+
+        backgrounds[photo_id].hyperlink+'">'+
         backgrounds[photo_id].attribution+
         '</a>';
     }

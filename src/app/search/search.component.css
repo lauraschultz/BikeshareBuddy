@@ -1,7 +1,13 @@
+mat-form-field {
+    z-index:0;
+}
+
 .search-results {
     max-height:200px;
     overflow-y: scroll;
     margin: -20px 0px 10px 0px;
+    z-index: 1;
+    position: relative; 
 }
 
 .search-results .result {

@@ -23,5 +23,15 @@ export var backgrounds = [
         url: '../assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg',
         attribution: 'Viviana Rishe',
         hyperlink: 'https://unsplash.com/photos/IOu70_yVBsA'
+    },
+    {
+        url: '../assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg',
+        attribution: 'Victor Xok',
+        hyperlink: 'https://unsplash.com/photos/Gi0OMNguFaw'
+    },
+    {
+        url: '../assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg',
+        attribution: 'Everton Vila',
+        hyperlink: 'https://unsplash.com/photos/AsahNlC0VhQ'
     }
 ]
