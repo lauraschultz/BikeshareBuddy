@@ -12,23 +12,26 @@ import { backgrounds } from './images';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'bikeshare';
+  title = 'BikeshareBuddy';
+  photoId: number;
 
-makeBackground():void {
+onResize():void {
   if(window.innerWidth>=600){
-      const photo_id = Math.floor(Math.random()*backgrounds.length);
-      document.getElementById('content').style.backgroundImage = "url('"+ backgrounds[photo_id].url+"')";
+      document.getElementById('content').style.backgroundImage = "url('"+ backgrounds[this.photoId].url+"')";
       document.getElementById('attribution').innerHTML = 
         '<i class="material-icons" style="font-size:small">panorama</i>&nbsp;Background image: '+
         '<a style="color: var(--navbar-dark);text-decoration: none;border-bottom: 1.5px solid;padding: 0px 2px;" target="_blank" href="'+
-        backgrounds[photo_id].hyperlink+'">'+
-        backgrounds[photo_id].attribution+
+        backgrounds[this.photoId].hyperlink+'">'+
+        backgrounds[this.photoId].attribution+
         '</a>';
+    } else {
+      document.getElementById('content').style.backgroundImage = 'var(--background-gradient)';
     }
 }
 
   ngOnInit(): void {
-    this.makeBackground();
+    this.photoId = Math.floor(Math.random()*backgrounds.length);
+    this.onResize();
   }
   
 }
