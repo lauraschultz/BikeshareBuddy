@@ -1,8 +1,15 @@
-<div class="container" (window:resize)="onResize()">
+<div id="container" (window:resize)="onResize()">
   <div class="row navbar">
     <mat-toolbar>
-  <a routerLink=''><img class="navbar-logo" src="../assets/bb_logo.svg"/></a>
-</mat-toolbar>
+      <a routerLink=''><img class="navbar-logo" src="../assets/bb_logo.svg"/></a>
+      <span style="flex:1 1 auto"></span>
+        <a routerLink="search">
+          <span class="navbar-link"><i class="material-icons">search</i>&nbsp;Search</span>
+        </a>
+        <a routerLink="login">
+          <span class="navbar-link"><i class="material-icons">account_circle</i>&nbsp;Sign in</span>
+        </a>
+    </mat-toolbar>
   </div>
   <div class="row" id="content">
     <router-outlet></router-outlet>

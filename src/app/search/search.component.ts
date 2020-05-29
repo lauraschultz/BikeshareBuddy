@@ -21,15 +21,23 @@ export class SearchComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.bikeshareDataService.getSystemsArray().subscribe();
+    this.bikeshareDataService.retrieveSystemsArray().subscribe();
   }
 
-  runSearch(event: any){
+  runSearch(event: any): void{
     this.searchResults = this.liveSearchService.getAllMatches(event.target.value).filter(sys => sys !== this.selectedSystem);
     if(this.selectedSystem){this.searchResults.unshift(this.selectedSystem);}    // selected always shows up first in results
   }
 
-  continue() {
+  handleSelect(sys: System):void {
+    if(this.selectedSystem === sys){
+      this.continue();
+    } else {
+      this.selectedSystem = sys;
+    }
+  }
+
+  continue(): void {
     if(this.selectedSystem){
       // system has been selected
       this.bikeshareDataService.setSelectedSystem(this.selectedSystem);

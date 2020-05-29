@@ -1,0 +1,16 @@
+.system h2 {
+    border-bottom: 1px black solid;
+}
+
+.system .content .title {
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.system .content span {
+    display:inline-block;
+}
+
+.infoWindow {
+    text-align:left;
+}

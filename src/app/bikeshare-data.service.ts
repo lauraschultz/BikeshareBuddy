@@ -5,79 +5,86 @@ import { Feed, StationInfo, StationStatus } from './response-interfaces';
 import { filter, map, find, mergeMap, catchError, retry } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
 import { System } from './system.model';
+import { StationDockInfo } from './map/map.component';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BikeshareDataService {
-  private feeds: Observable<Feed[]>;
-  private selectedSystem: System;
+  private mapSelectedSystem: System;
   private allSystems: System[] = [];
-  systemError = false;
 
   constructor(private http: HttpClient) { }
 
-  // return feed url of feedName from the currently selected system
-  getFeedFromDiscovery(feedName): Observable<string> {
-      return this.http.get(this.selectedSystem.discoveryUrl, {responseType:'json'}).pipe(
+  getSystemByID(sysID:string): Observable<System> {
+    if(this.allSystems.length>0){
+      return of(this.filterArr(sysID));
+    }
+    return this.retrieveSystemsArray().pipe(map(() => this.filterArr(sysID)));
+  }
+
+  private filterArr(sysID: string): System {
+    const results =  this.allSystems.filter(sys => sys.systemID === sysID);
+      return (results.length === 0 ? undefined : results[0]);
+  }
+
+  // getSystemByID(sysID:string): System {
+  //   const results =  this.allSystems.filter(sys => sys.systemID === sysID);
+  //     return (results.length === 0 ? undefined : results[0]);
+  // }
+
+  getStationInfo(sys?: System): Observable<StationInfo[]> {
+    console.log('getstationinfo');
+    if(sys){
+      return this.getFeedFromDiscovery(sys.discoveryUrl, 'station_information');
+    }
+    return this.getFeedFromDiscovery(this.mapSelectedSystem.discoveryUrl, 'station_information');
+  }
+
+  getStationStatus(sys?: System): Observable<StationStatus[]> {
+    if(sys){
+      return this.getFeedFromDiscovery(sys.discoveryUrl, 'station_status');
+    }
+    return this.getFeedFromDiscovery(this.mapSelectedSystem.discoveryUrl, 'station_status');
+  }
+
+   getFeedFromDiscovery(discUrl: string, feedName: string): Observable<any> {
+      return this.http.get(discUrl, {responseType:'json'}).pipe(
               map(x => x['data']['en']['feeds']),
-              map(feeds => feeds.filter((feed: Feed)=> feed.name === feedName)[0].url)
-              );
+              map(feeds => {
+                console.log('feeds:', feeds, 'feedname:', feedName);
+                const result = feeds.filter((feed: Feed) => feed.name === feedName);
+                console.log(result);
+                return (result.length>0 ? result[0].url : undefined);}
+              ))
+              .pipe(mergeMap(feedUrl => this.http.get(feedUrl, {responseType:'json'})),
+              map(x => x['data']['stations']));
   }
 
   setSelectedSystem(sys: System){
     console.log('system set:', sys)
-    this.selectedSystem = sys;
+    this.mapSelectedSystem = sys;
   }
 
   getSelectedSystem():System {
-    return this.selectedSystem;
+    return this.mapSelectedSystem;
   }
 
-  getAllSystems(): System[] {
-    return this.allSystems;
-  }
+  // getAllSystems(): System[] {
+  //   return this.allSystems;
+  // }
 
   // returns only unsanitized csv string
-  getAllSystemsCsv(): Observable<string>{
+  private getAllSystemsCsv(): Observable<string>{
     return this.http.get('https://raw.githubusercontent.com/NABSA/gbfs/master/systems.csv', {responseType: 'text'});
   }
 
-  getSystemFeed(feedName: string){
-    return this.getFeedFromDiscovery(feedName)
-        .pipe(mergeMap(feed => this.http.get(feed, {responseType:'json'})),
-              map(x => {this.systemError = false; return x['data']['stations']}))
-        .pipe(retry(2));
-  }
-
-  // private handleError(error: HttpErrorResponse) {
-  //   // if (error.error instanceof ErrorEvent) {
-  //   //   // A client-side or network error occurred. Handle it accordingly.
-  //   //   console.error('An error occurred:', error.error.message);
-  //   // } else {
-  //   //   // The backend returned an unsuccessful response code.
-  //   //   // The response body may contain clues as to what went wrong,
-  //   //   console.error(
-  //   //     `Backend returned code ${error.status}, ` +
-  //   //     `body was: ${error.error}`);
-  //   // }
-  //   // return an observable with a user-facing error message
-  //   this.systemError = true;
-  //   return throwError(
-  //     'Something bad happened; please try again later.');
-  // };
-
-  // sets selected system according to given systemID
-  setSystemByID(sysID): Observable<void> {
-    return this.getSystemsArray().pipe(map(sysArray => {
-      console.log('allsystems is: ', this.allSystems);
-      const results = this.allSystems.filter(sys => sys.systemID==sysID);
-      this.selectedSystem = (results.length == 0 ? undefined : results[0]);
-    }));
+getAllSystems(){
+  return this.allSystems;
 }
 
-  getSystemsArray(): Observable<System[]> {
+  retrieveSystemsArray(): Observable<System[]> {
     // let allSystems = [];
     return this.getAllSystemsCsv().pipe(
       map(data => data.split('\n').slice(1, -1)),
@@ -93,5 +100,83 @@ export class BikeshareDataService {
             });
         
       }))).pipe(map(sysArr => this.allSystems = sysArr));
+  }
+
+  getSlots(station: StationStatus): StationDockInfo {
+    const max = 15;
+    const cutoff = 2;
+    const total = station.num_bikes_available+station.num_docks_available;
+    let empty = Math.floor((station.num_docks_available/total)*max);
+    let full = Math.floor((station.num_bikes_available/total)*max);
+    if((station.num_bikes_available-full) <= cutoff){
+      full = station.num_bikes_available;
+    }
+    if((station.num_docks_available-empty) <= cutoff){
+      empty = station.num_docks_available;
+    }
+    return new StationDockInfo({
+      empty: empty,
+      full: full,
+      extraEmpty: station.num_docks_available - empty,
+      extraFull: station.num_bikes_available - full
+    })
+  }
+
+  timeFormat(date:Date):string {
+    const now = new Date();
+    date = new Date((+date*1000));
+    const timeAgo = now.getTime() - date.getTime();
+    if(timeAgo < 1000*60){              // one minute
+      return '<1 minute ago';
+    }
+    if(timeAgo < 1000*60*60){           // one hour
+      const mins = Math.floor(timeAgo/(1000*60))
+      return  mins + ' min' + (mins==1 ? '' : 's') + ' ago';
+    }
+    if(timeAgo < 1000*60*60*24){        // one day
+      const hours = Math.floor(timeAgo/(1000*60*60))
+      return  hours + ' hour' + (hours==1 ? '' : 's') + ' ago';
+    }
+    if(timeAgo < 1000*60*60*24*30){     // one month
+      const days = Math.floor(timeAgo/(1000*60*60*24))
+      return  days + ' day' + (days==1 ? '' : 's') + ' ago';
+    }
+    if(timeAgo < 1000*60*60*24*365){    // one year
+      const months = Math.floor(timeAgo/(1000*60*60*24*30))
+      return  months + ' day' + (months==1 ? '' : 's') + ' ago';
+    }
+    const years = Math.floor(timeAgo/(1000*60*60*24*365))
+    return years + ' year' + (years==1 ? '' : 's') + ' ago';
+  }
+
+  generateInfoWindowHTML(station:StationStatus):string {
+    const docks = this.getSlots(station);
+    let newHTML = '';
+    if(!(station.is_renting && station.is_returning)) {
+      newHTML += '<div class="warning"><i class="material-icons">warning</i>&nbsp;Not currently ';
+      if(!station.is_renting && !station.is_returning) {
+        newHTML += 'renting bikes or accepting bike returns';
+      } else if (!station.is_renting) {
+        newHTML += 'renting bikes';
+      } else {
+        newHTML += 'accepting bike returns';
+      }
+      newHTML+= '</div>';
+    }
+    newHTML += '<div class="cont">';
+    for(let i=0; i<docks.full; i++){
+      newHTML += '<span class="full"></span>';
+    }
+    newHTML += (docks.extraFull>0 ? '<span class="full moretxt"><i class="material-icons">add_circle_outline</i>' + docks.extraFull + '</span>': '');
+    
+    for(let i=0; i<docks.empty; i++){
+      newHTML += '<span class="empty"></span>';
+    }
+    newHTML += (docks.extraEmpty>0 ? '<span class="empty moretxt"><i class="material-icons">add_circle_outline</i>' + docks.extraEmpty + '</span>': '');
+    
+    newHTML += '</div><div class="footer"><div>' + station.num_bikes_available + ' available bike' + (station.num_bikes_available==1 ? '' : 's') + '</div>';
+    newHTML += '<div>' + station.num_docks_available + ' available dock' + (station.num_docks_available==1 ? '' : 's') + '</div>';
+    newHTML += '<div class="timestamp"><i class="material-icons">watch_later</i>&nbsp;Last updated ' + this.timeFormat(station.last_reported) + '</div></div>';
+    return newHTML
   }
 }

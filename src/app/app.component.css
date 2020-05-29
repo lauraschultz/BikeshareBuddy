@@ -1,4 +1,4 @@
-.container {
+#container {
     height:100%;
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -15,6 +15,17 @@
 .navbar .mat-toolbar-single-row {
     height:auto!important;
     padding:5px 10px!important;
+}
+
+.navbar-link {
+    font-size: small;
+    color: var(--light);
+    padding:8px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.navbar a{
+    text-decoration: none!important;
 }
 
 #content {
@@ -51,11 +62,17 @@ mat-toolbar {
         height:65px;
     }
 
+    .navbar-link {
+        font-size: smaller;
+        padding:10px;
+    }
+
     .navbar .mat-toolbar-single-row {
         padding:10px 16px!important;
     }
 
     #footer {
+        background-color: var(--light);
         display: inline;
         padding:20px;
     }

@@ -11,7 +11,7 @@
             <input type="text" (keyup)="runSearch($event)" matInput>
         </mat-form-field>
         <div class="search-results">
-            <div *ngFor="let sys of searchResults" class="result" (click)="selectedSystem=sys" [class.selected]="selectedSystem === sys">
+            <div *ngFor="let sys of searchResults" class="result" (click)="handleSelect(sys)" [class.selected]="selectedSystem === sys">
                 <span>{{sys.systemName}}</span> |
                 <small>{{sys.location}}</small>
             </div>

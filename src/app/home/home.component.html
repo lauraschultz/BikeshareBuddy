@@ -1,0 +1,23 @@
+<mat-card class="with-max">
+    <mat-card-title *ngIf="userInfo">Welcome, {{userInfo.displayName}}!</mat-card-title>
+    <mat-card-content>
+        <!-- <div *ngFor="let system of userData | keyvalue">
+            {{system.key}}
+            <div *ngFor="let station of system.value | keyvalue">
+                {{station.key}}
+            </div>
+        </div> -->
+
+        <div *ngFor="let sys of userData" class="system">
+            <h2>{{sys.name}}</h2>
+            <div *ngFor="let station of sys.stations" class="content">
+                <span class="star"><a></a></span>
+                <span class="infoWindow">
+                    <div class="title">{{station.name}}</div>
+                    <div class="status" [innerHtml]="station.displayHtml"></div>
+                </span>
+            </div>
+            
+        </div>
+    </mat-card-content>
+</mat-card>
