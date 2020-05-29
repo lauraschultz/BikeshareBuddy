@@ -48,4 +48,4 @@ config.js
 
 assets/*
 
-/index.html
+src/index.html
