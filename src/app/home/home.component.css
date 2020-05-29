@@ -14,3 +14,7 @@
 .infoWindow {
     text-align:left;
 }
+
+.system .map-button {
+    float:right;
+}

@@ -9,7 +9,9 @@
         </div> -->
 
         <div *ngFor="let sys of userData" class="system">
-            <h2>{{sys.name}}</h2>
+            <h2>{{sys.name}}
+                <button class="mat-raised-button map-button" (click)="goToMap(sys)">Go to map <i class="material-icons">forward</i></button>
+            </h2>
             <div *ngFor="let station of sys.stations" class="content">
                 <span class="star"><a></a></span>
                 <span class="infoWindow">

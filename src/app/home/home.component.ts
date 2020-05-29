@@ -39,6 +39,11 @@ export class HomeComponent implements OnInit {
     
   }
 
+  goToMap(sys: System):void {
+    this.bikeshareDataService.setSelectedSystem(sys);
+    this.router.navigate(['map', sys.systemID]);
+  }
+
    createUserSavedData(obj: any): void {
     for (let [key, value] of Object.entries(obj)) {
       // for each system
