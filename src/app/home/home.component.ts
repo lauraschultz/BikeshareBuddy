@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StationStatus, StationInfo } from '../response-interfaces';
 import { BikeshareDataService } from '../bikeshare-data.service';
 import { map, mergeMap, tap } from 'rxjs/operators';
@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
+    private route: ActivatedRoute,
     private router: Router,
     private bikeshareDataService: BikeshareDataService
     ) { }
@@ -31,20 +32,17 @@ export class HomeComponent implements OnInit {
     } else {
       this.userInfo = this.authenticationService.userDetails;
       this.authenticationService.getUserData().subscribe(d => {
-        console.log(d);
-        //this.userData = ;
         this.createUserSavedData(d);
       });
     }
-    
   }
 
   goToMap(sys: System):void {
     this.bikeshareDataService.setSelectedSystem(sys);
-    this.router.navigate(['map', sys.systemID]);
+    this.router.navigate(['map', sys.systemID])
   }
 
-   createUserSavedData(obj: any): void {
+  createUserSavedData(obj: any): void {
     for (let [key, value] of Object.entries(obj)) {
       // for each system
       let sysData = new SystemData({stations: []});
@@ -54,16 +52,22 @@ export class HomeComponent implements OnInit {
                           sysData.name = s.systemName;
                           for (let [station, _] of Object.entries(value)){
                             sysData.stations.push( new StationData({
-                              name: systemData[0].filter(s => s.station_id === station)[0].name,
-                              displayHtml: this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0])
-                            }))
+                                    name: systemData[0].filter(s => s.station_id === station)[0].name,
+                                    displayHtml: this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0], s.systemID)
+                                  }));
+                            // this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0], s.systemID)
+                            //   .then(html => {
+                            //     sysData.stations.push( new StationData({
+                            //       name: systemData[0].filter(s => s.station_id === station)[0].name,
+                            //       displayHtml: html
+                            //     }));
+                            //   });
                           }
                           return sysData;
                         })))).subscribe(x => this.userData.push(x));
-                      }
-                      }
-
-      
+      }
+  }
+   
   getSystemFromId(sysID: string):Observable<System> {
     return this.bikeshareDataService.getSystemByID(sysID);
   }

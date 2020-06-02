@@ -4,6 +4,8 @@ import { BikeshareDataService } from '../bikeshare-data.service';
 import { Marker } from '../marker.Model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { AuthenticationService } from '../authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-map',
@@ -13,21 +15,24 @@ import { DatePipe } from '@angular/common';
 export class MapComponent implements OnInit {
   @Output() switchToSearch  = new EventEmitter<boolean>()
   title = 'bikeshare';
-  private station_info: StationInfo[];
-  private station_status: StationStatus[];
   private info_window = new google.maps.InfoWindow({content: ''});
+  openInfoWindowID: string;
+  isFave: boolean;
   @ViewChild('map', {static:true}) mapElement: any;
   map: google.maps.Map;
   markers = {};
+  infoWindows = {};
   pageLoading = true;
   showErrorCard = false;
 
-  constructor(private bikeshareDataService: BikeshareDataService,private route: ActivatedRoute,
-    private router: Router){}
+  constructor(private bikeshareDataService: BikeshareDataService,
+    private authenticationService: AuthenticationService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private snackBar: MatSnackBar){}
 
-  ngOnInit(){
+  ngOnInit(): void{
     if(!this.bikeshareDataService.getSelectedSystem()){
-      console.log('system not set');
       // current system not set
       this.bikeshareDataService.getSystemByID(this.route.snapshot.paramMap.get('systemID'))
         .subscribe(sys => {
@@ -36,7 +41,6 @@ export class MapComponent implements OnInit {
         });
       // console.log('now current system is ' + this.bikeshareDataService.getSelectedSystem());
     } else {
-      console.log('system set');
       this.getStationInfo();
     }
   }
@@ -46,7 +50,7 @@ export class MapComponent implements OnInit {
     let lat = 0;
     let lng = 0;
     let counter = 0;
-    this.station_info.forEach(station => {
+    this.bikeshareDataService.mapStationInfoArr.forEach(station => {
       lat += station.lat;
       lng += station.lon;
       counter ++;
@@ -69,40 +73,105 @@ export class MapComponent implements OnInit {
       map: this.map
       // icon: '../../assets/place-24px.png'
     }
-    this.station_info.forEach(station => 
+    this.bikeshareDataService.mapStationInfoArr.forEach(station => 
         {
           markerProperties['position'] = new google.maps.LatLng(station.lat, station.lon);
-          this.markers[station.station_id] = new Marker(station.name, new google.maps.Marker(markerProperties));
-          
+          this.markers[station.station_id] = new Marker(station.name, new google.maps.Marker(markerProperties));   
+    });
+  }
+
+  handleStar(): void {
+    // console.log('star:) ', this.openInfoWindowID);
+    if(!this.authenticationService.isLoggedIn()){
+      this.openSnackBar('You must be signed in to add a station to your favorites', 'Dismiss');
+    } else {
+      this.authenticationService.changeFavorite(this.bikeshareDataService.getSelectedSystem().systemID, this.openInfoWindowID)
+      .then(x => {
+        this.isFave = x;
+        const message = (x ? 'The station has been added to your favorites' : 'The station has been removed from your favorites');
+        this.openSnackBar(message, 'Dismiss');
+    });
+    }
+    
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
     });
   }
 
   addInfoWindows(){
-    this.station_status.forEach(station => 
+    this.bikeshareDataService.mapStationStatusArr.forEach(station => 
       {
         let marker = this.markers[station.station_id];
         if(marker){  
-          var _this = this;
-          google.maps.event.addListener(marker.marker, 'click', function() {
-            _this.info_window.close();
-            _this.info_window.setContent(_this.generateInfoWindowHTML(marker.name, station));
-            _this.info_window.open(_this.map, marker.marker);
-          }); 
+          // var _this = this;
+          // this.infoWindows[station.station_id] = new google.maps.InfoWindow({
+          //   content:this.generateInfoWindowHTML(marker.name, station)
+          // });
+          google.maps.event.addListener(marker.marker, 'click', () => {
+              this.info_window.close();
+              this.info_window.setContent(this.generateInfoWindowHTML(marker.name, station));
+              this.info_window.open(this.map, marker.marker);
+              this.openInfoWindowID = station.station_id;
+
+              google.maps.event.addListener(this.info_window, 'closeclick', () => {
+                this.openInfoWindowID = undefined;
+              });
+
+              this.isFavorite(this.openInfoWindowID).then(x => {
+                this.isFave = x;
+              });
+
+            // // if(document.querySelector('#button')){
+            //   document.querySelector('#button')
+            //   .addEventListener('click', () => {
+            //     this.handleStar(station.station_id);
+            //     //this.generateInfoWindowHTML(marker.name, station);
+            //   });
+            // // }
+            
+            });
         }
+      });
+
+
+      // this.waitForElementToDisplay('#button', 500);
+
+      // google.maps.event.addListener(this.info_window, 'domready', () => {
         
-      })
+    // });
   }
+
+  findName(stationID: string): string {
+    return this.bikeshareDataService.findName(stationID);
+  }
+
+  isFavorite(stationID: string):Promise<boolean> {
+    return this.authenticationService.isFavorite(this.bikeshareDataService.getSelectedSystem().systemID, stationID);
+  }
+
+  // waitForElementToDisplay(selector, time) {
+  //   console.log('wait mthod.');
+  //   if(document.querySelector(selector)!=null) {
+  //     document.querySelector(selector)
+  //      .addEventListener('click', this.handleStar(this.openInfoWindowID));
+  //   }
+  //       setTimeout(()=> {
+  //           this.waitForElementToDisplay(selector, time);
+  //       }, time);
+
+  // }
+
   generateInfoWindowHTML(title: string, station: StationStatus): string {
     return '<div class="infoWindow"><h3>'+title+'</h3>'+this.bikeshareDataService.generateInfoWindowHTML(station)+'</div>';
   }
 
   getStationInfo(): void {
-    console.log('getStationInfo');
     this.bikeshareDataService.getStationInfo()
       .subscribe(x =>
         {
-          console.log('got station info:', x);
-          this.station_info = x;
           if(x === []){
             this.handleError();
           } else {
@@ -119,8 +188,6 @@ export class MapComponent implements OnInit {
     this.bikeshareDataService.getStationStatus()
       .subscribe(x => 
         {
-          console.log('got station status:', x);
-          this.station_status = x;
           this.addMarkers();
           this.addInfoWindows();
           this.pageLoading = false;

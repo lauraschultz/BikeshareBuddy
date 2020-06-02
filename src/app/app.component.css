@@ -31,6 +31,8 @@
 #content {
     flex: 1 1 auto;
     background-image: var(--background-gradient);
+    overflow-y:scroll;
+    position: relative;
 }
 
 mat-toolbar {

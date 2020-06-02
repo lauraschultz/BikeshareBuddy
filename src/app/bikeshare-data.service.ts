@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, from, of, throwError } from 'rxjs';
 import { Feed, StationInfo, StationStatus } from './response-interfaces';
-import { filter, map, find, mergeMap, catchError, retry } from 'rxjs/operators';
+import { filter, map, find, mergeMap, catchError, retry, tap } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
 import { System } from './system.model';
 import { StationDockInfo } from './map/map.component';
+import { AuthenticationService } from './authentication.service';
 
 
 @Injectable({
@@ -13,9 +14,11 @@ import { StationDockInfo } from './map/map.component';
 })
 export class BikeshareDataService {
   private mapSelectedSystem: System;
+  mapStationInfoArr: StationInfo[];
+  mapStationStatusArr: StationStatus[];
   private allSystems: System[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authenticationService: AuthenticationService) { }
 
   getSystemByID(sysID:string): Observable<System> {
     if(this.allSystems.length>0){
@@ -35,27 +38,34 @@ export class BikeshareDataService {
   // }
 
   getStationInfo(sys?: System): Observable<StationInfo[]> {
-    console.log('getstationinfo');
-    if(sys){
-      return this.getFeedFromDiscovery(sys.discoveryUrl, 'station_information');
+    if(!sys || sys === this.mapSelectedSystem) {
+      if(this.mapStationInfoArr) {
+        return of(this.mapStationInfoArr)
+      } else {
+        return this.getFeedFromDiscovery(this.mapSelectedSystem.discoveryUrl, 'station_information').pipe(
+          tap(x => this.mapStationInfoArr = x));
+      }
     }
-    return this.getFeedFromDiscovery(this.mapSelectedSystem.discoveryUrl, 'station_information');
+    return this.getFeedFromDiscovery(sys.discoveryUrl, 'station_information');
   }
 
   getStationStatus(sys?: System): Observable<StationStatus[]> {
-    if(sys){
-      return this.getFeedFromDiscovery(sys.discoveryUrl, 'station_status');
+    if(!sys || sys === this.mapSelectedSystem) {
+      if(this.mapStationStatusArr) {
+        return of(this.mapStationStatusArr)
+      } else {
+        return this.getFeedFromDiscovery(this.mapSelectedSystem.discoveryUrl, 'station_status').pipe(
+          tap(x => this.mapStationStatusArr = x));
+      }
     }
-    return this.getFeedFromDiscovery(this.mapSelectedSystem.discoveryUrl, 'station_status');
+    return this.getFeedFromDiscovery(sys.discoveryUrl, 'station_status');
   }
 
    getFeedFromDiscovery(discUrl: string, feedName: string): Observable<any> {
       return this.http.get(discUrl, {responseType:'json'}).pipe(
               map(x => x['data']['en']['feeds']),
               map(feeds => {
-                console.log('feeds:', feeds, 'feedname:', feedName);
                 const result = feeds.filter((feed: Feed) => feed.name === feedName);
-                console.log(result);
                 return (result.length>0 ? result[0].url : undefined);}
               ))
               .pipe(mergeMap(feedUrl => this.http.get(feedUrl, {responseType:'json'})),
@@ -63,8 +73,12 @@ export class BikeshareDataService {
   }
 
   setSelectedSystem(sys: System){
+    if(sys !== this.mapSelectedSystem){
+      this.mapSelectedSystem = sys;
+      this.mapStationStatusArr = undefined;
+      this.mapStationInfoArr = undefined;
+    }
     console.log('system set:', sys)
-    this.mapSelectedSystem = sys;
   }
 
   getSelectedSystem():System {
@@ -102,8 +116,12 @@ getAllSystems(){
       }))).pipe(map(sysArr => this.allSystems = sysArr));
   }
 
+  findName(stationID: string): string {
+    return this.mapStationInfoArr.filter(x => x.station_id === stationID)[0].name;
+  }
+
   getSlots(station: StationStatus): StationDockInfo {
-    const max = 15;
+    const max = 12;
     const cutoff = 2;
     const total = station.num_bikes_available+station.num_docks_available;
     let empty = Math.floor((station.num_docks_available/total)*max);
@@ -149,8 +167,8 @@ getAllSystems(){
     return years + ' year' + (years==1 ? '' : 's') + ' ago';
   }
 
-  generateInfoWindowHTML(station:StationStatus):string {
-    const docks = this.getSlots(station);
+  generateInfoWindowHTML(station:StationStatus, sysID?: string): string {
+      const docks = this.getSlots(station);
     let newHTML = '';
     if(!(station.is_renting && station.is_returning)) {
       newHTML += '<div class="warning"><i class="material-icons">warning</i>&nbsp;Not currently ';

@@ -7,6 +7,7 @@
     --text-gray: #909090;
     --background-gradient: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
     --desktop-breakpoint: 600px;
+    --gold : #FFD700;
 }
 
 html, body {
@@ -43,7 +44,7 @@ mat-card.with-max {
     vertical-align: middle!important;
 }
 
-.infoWindow .empty, .infoWindow .full {
+.infoWindow .cont .empty, .infoWindow .cont .full {
     height:18px;
     width:10px;
     border-radius: 40%;
@@ -53,19 +54,19 @@ mat-card.with-max {
     vertical-align: middle;
 }
 
-.infoWindow .empty {
+.infoWindow .cont .empty {
     background-color: white;
     border: 2px solid black;
 }
 
-.infoWindow .moretxt {
+.infoWindow .cont .moretxt {
     padding:0 2px 0 0;
     border-radius: 5px;
     width:auto;
     font-weight: bold;
 }
 
-.infoWindow .moretxt i{
+.infoWindow .cont .moretxt i{
     font-size: smaller;
 }
 
@@ -73,7 +74,7 @@ mat-card.with-max {
     color:black;
 }
 
-.infoWindow .full {
+.infoWindow .cont .full {
     background-color: navy;
     border: 2px solid navy;
 }
@@ -97,13 +98,27 @@ mat-card.with-max {
 .infoWindow .timestamp i{
     font-size: small;
 }
+/* 
+.infoWindow .col {
+    display:inline-block;
+}
+
+.infoWindow .col.star {
+    float:left;
+}
+
+.infoWindow .col.star .empty {
+    color:gray;
+}
+
+.infoWindow .col.star .filled {
+    color: var(--gold);
+} */
 
 @media only screen and (min-width: 600px) {
     mat-card.with-max{
-        margin-top:80px;
+        margin:80px auto;
         max-width:450px;
-        margin-left:auto;
-        margin-right:auto;
     }
     
 }

@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
     if(this.selectedSystem){
       // system has been selected
       this.bikeshareDataService.setSelectedSystem(this.selectedSystem);
-      this.router.navigate(['map', this.bikeshareDataService.getSelectedSystem().systemID])
+      this.router.navigate(['map', this.bikeshareDataService.getSelectedSystem().systemID]);
     } else {
       // system has not been selected, show error
       this.errorSelectSystem = true;

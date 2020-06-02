@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { HomeComponent } from './home/home.component';
     MatCardModule,
     MatButtonModule,
     MatSelectModule,
+    MatSnackBarModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
     AngularFireModule.initializeApp(environment.firebase, 'bikeshare'),

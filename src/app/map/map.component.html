@@ -1,4 +1,18 @@
 <mat-spinner *ngIf="pageLoading" class="loading-spinner"></mat-spinner>
+<div *ngIf="openInfoWindowID" id="star-container">
+  <div class="title">
+    {{findName(openInfoWindowID)}}
+  </div>
+  <span class="star col" (click)="handleStar()">
+    <i *ngIf="isFave" class="material-icons filled">star</i>
+    <i *ngIf="!isFave" class="material-icons empty">star_outline</i>
+  </span>
+  <span class="desc col">
+    <span *ngIf="isFave">Remove station from favorites</span>
+    <span *ngIf="!isFave">Add station to favorites</span>
+  </span>
+  
+</div>
 <ng-container *ngIf="showErrorCard">
   <app-error-card></app-error-card>
 </ng-container>

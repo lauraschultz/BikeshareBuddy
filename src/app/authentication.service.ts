@@ -22,37 +22,7 @@ export class AuthenticationService {
     public afDb: AngularFireDatabase,
     private router: Router
     ) {
-  //   this.user = afAuth.authState;
-  //   this.user.subscribe(
-  //   (user) => {
-  //     if (user) {
-  //       this.userDetails = user;
-  //     }
-  //     else {
-  //       this.userDetails = null;
-  //     }
-  //   }
-  // );
 }
-
-  // doGoogleLogin(){
-  //   return new Promise<any>((resolve, reject) => {
-  //     let provider = new firebase.auth.GoogleAuthProvider();
-  //     provider.addScope('profile');
-  //     provider.addScope('email');
-  //     this.afAuth
-  //     .signInWithPopup(provider)
-  //     .then(res => {
-  //       resolve(res);
-  //     })
-  //   })
-  // }
-
-  // signInWithGoogle() {
-  //   return this.afAuth.signInWithPopup(
-  //     new firebase.auth.GoogleAuthProvider()
-  //   )
-  // }
 
   isLoggedIn() {
     if (this.userDetails == null ) {
@@ -75,6 +45,27 @@ export class AuthenticationService {
       this.afAuth.signOut().then();
     }
 
+    changeFavorite(sysID: string, stationID: string): Promise<boolean> {
+      // returns true if station is a favorite after change, false if not
+      return this.isFavorite(sysID, stationID).then(b => {
+        if(b){
+          this.removeFavorite(sysID, stationID).then();
+          return false;
+        }
+        this.addFavorite(sysID, stationID).then();
+        return true;
+      });
+    }
+
+    isFavorite(sysID: string, stationID: string): Promise<boolean> {
+      if(!this.userDetails){
+        return new Promise((resolve, _) => resolve(false));
+      }
+      return this.afDb.object('users/'+this.userDetails.uid+'/'+sysID+'/'+stationID).query.once('value').then(x => (x.val() ? true : false));
+      // return this.afDb.object('users/'+this.userDetails.uid+'/'+sysID+'/'+stationID).valueChanges()
+      //   .pipe(map(x=> {console.log('isFavorite observable returned.'); return (x ? true : false)}));
+    }
+
     addFavorite(sysID: string, stationID: string): Promise<void> {
       let data = {};
       data['/'+sysID+'/'+stationID]=true;
@@ -83,10 +74,6 @@ export class AuthenticationService {
 
     removeFavorite(sysID: string, stationID: string): Promise<void> {
       return this.afDb.object('users/'+this.userDetails.uid+'/'+sysID+'/'+stationID).remove();
-    }
-
-    getFavoritesBySystem(sysID: string): Observable<any> {
-      return this.userData.pipe(map(data => data[sysID]));
     }
 
     setFakeData() {
