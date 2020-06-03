@@ -18,3 +18,18 @@
 .system .map-button {
     float:right;
 }
+
+.content .star {
+    padding:10px;
+    color: var(--gold);
+    vertical-align: top;
+    margin-top:35px;
+}
+
+.content .star .i {
+    cursor: pointer;
+}
+
+.content {
+    padding: 5px 0;
+}

@@ -103,7 +103,6 @@ getAllSystems(){
     return this.getAllSystemsCsv().pipe(
       map(data => data.split('\n').slice(1, -1)),
       map(lines => lines.map(line => {
-        //line = line.replace(/"([\w\W]*),([\w\W]*)"/, "$1$2"); // fix problem with comma in the location name
         const d = line.replace(/"([\w\W]*),([\w\W]*)"/, "$1$2").split(',');
         return new System({
               countryCode: d[0],
@@ -190,11 +189,10 @@ getAllSystems(){
     for(let i=0; i<docks.empty; i++){
       newHTML += '<span class="empty"></span>';
     }
-    newHTML += (docks.extraEmpty>0 ? '<span class="empty moretxt"><i class="material-icons">add_circle_outline</i>' + docks.extraEmpty + '</span>': '');
-    
-    newHTML += '</div><div class="footer"><div>' + station.num_bikes_available + ' available bike' + (station.num_bikes_available==1 ? '' : 's') + '</div>';
-    newHTML += '<div>' + station.num_docks_available + ' available dock' + (station.num_docks_available==1 ? '' : 's') + '</div>';
-    newHTML += '<div class="timestamp"><i class="material-icons">watch_later</i>&nbsp;Last updated ' + this.timeFormat(station.last_reported) + '</div></div>';
-    return newHTML
+    newHTML += (docks.extraEmpty>0 ? '<span class="empty moretxt"><i class="material-icons">add_circle_outline</i>' + docks.extraEmpty + '</span>': '')
+      + '</div><div class="footer"><div>' + station.num_bikes_available + ' available bike' + (station.num_bikes_available==1 ? '' : 's')
+      + '</div><div>' + station.num_docks_available + ' available dock' + (station.num_docks_available==1 ? '' : 's') + '</div>'
+      + '<div class="timestamp"><i class="material-icons">watch_later</i>&nbsp;Last updated ' + this.timeFormat(station.last_reported) + '</div></div>';
+    return newHTML;
   }
 }

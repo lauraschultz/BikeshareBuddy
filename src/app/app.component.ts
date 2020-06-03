@@ -5,6 +5,7 @@ import {} from 'googlemaps';
 import { Marker } from './marker.Model';
 import { System } from './system.model';
 import { backgrounds } from './images';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,8 @@ import { backgrounds } from './images';
 export class AppComponent implements OnInit {
   title = 'BikeshareBuddy';
   photoId: number;
+
+  constructor(private authenticationService: AuthenticationService){}
 
 onResize():void {
   if(window.innerWidth>=600){
@@ -27,6 +30,10 @@ onResize():void {
     } else {
       document.getElementById('content').style.backgroundImage = 'var(--background-gradient)';
     }
+}
+
+isLoggedIn():boolean {
+  return this.authenticationService.isLoggedIn();
 }
 
   ngOnInit(): void {

@@ -3,13 +3,13 @@
   <div class="title">
     {{findName(openInfoWindowID)}}
   </div>
-  <span class="star col" (click)="handleStar()">
-    <i *ngIf="isFave" class="material-icons filled">star</i>
-    <i *ngIf="!isFave" class="material-icons empty">star_outline</i>
+  <span class="star col" (click)="handleStar()" [ngSwitch]="isFave">
+    <i *ngSwitchCase="true" class="material-icons filled">star</i>
+    <i *ngSwitchCase="false" class="material-icons empty">star_outline</i>
   </span>
-  <span class="desc col">
-    <span *ngIf="isFave">Remove station from favorites</span>
-    <span *ngIf="!isFave">Add station to favorites</span>
+  <span class="desc col" [ngSwitch]="isFave">
+    <span *ngSwitchCase="true" >Remove station from favorites</span>
+    <span *ngSwitchCase="false">Add station to favorites</span>
   </span>
   
 </div>

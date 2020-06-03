@@ -39,9 +39,12 @@ export class MapComponent implements OnInit {
           this.bikeshareDataService.setSelectedSystem(sys);
           this.getStationInfo();
         });
-      // console.log('now current system is ' + this.bikeshareDataService.getSelectedSystem());
     } else {
       this.getStationInfo();
+    }
+
+    if(this.authenticationService.isLoggedIn()) {  
+      this.authenticationService.getUserData().subscribe();
     }
   }
 
@@ -58,11 +61,11 @@ export class MapComponent implements OnInit {
     return [lat/counter, lng/counter];
   }
 
-  generateMap() {
+  generateMap(){
     const center = this.calculateCenter();
     const mapProperties = {
       center: new google.maps.LatLng(center[0], center[1]),
-      zoom: 10,
+      zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
   };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
@@ -81,7 +84,6 @@ export class MapComponent implements OnInit {
   }
 
   handleStar(): void {
-    // console.log('star:) ', this.openInfoWindowID);
     if(!this.authenticationService.isLoggedIn()){
       this.openSnackBar('You must be signed in to add a station to your favorites', 'Dismiss');
     } else {
@@ -152,18 +154,6 @@ export class MapComponent implements OnInit {
     return this.authenticationService.isFavorite(this.bikeshareDataService.getSelectedSystem().systemID, stationID);
   }
 
-  // waitForElementToDisplay(selector, time) {
-  //   console.log('wait mthod.');
-  //   if(document.querySelector(selector)!=null) {
-  //     document.querySelector(selector)
-  //      .addEventListener('click', this.handleStar(this.openInfoWindowID));
-  //   }
-  //       setTimeout(()=> {
-  //           this.waitForElementToDisplay(selector, time);
-  //       }, time);
-
-  // }
-
   generateInfoWindowHTML(title: string, station: StationStatus): string {
     return '<div class="infoWindow"><h3>'+title+'</h3>'+this.bikeshareDataService.generateInfoWindowHTML(station)+'</div>';
   }
@@ -175,10 +165,10 @@ export class MapComponent implements OnInit {
           if(x === []){
             this.handleError();
           } else {
-              this.getStationStatus();
               if(!this.map){
                 this.generateMap();
               }
+              this.getStationStatus();
           }
         },
         err => this.handleError());

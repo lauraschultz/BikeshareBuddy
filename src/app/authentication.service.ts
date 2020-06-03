@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -17,19 +18,24 @@ export class AuthenticationService {
 
   userData: Observable<any>;
   userDataRef: AngularFireObject<any>;
+  private cookieValue: string;
 
   constructor(public afAuth: AngularFireAuth,
     public afDb: AngularFireDatabase,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
     ) {
 }
 
-  isLoggedIn() {
-    if (this.userDetails == null ) {
-        return false;
-      } else {
+  isLoggedIn(): boolean {
+    if (this.userDetails) {
         return true;
-      }
+    }
+    if(this.cookieService.get('user') !== ''){
+      this.userDetails = JSON.parse(this.cookieService.get('user'));
+      return true;
+    }
+    return false;
     }
 
     login(): void {
@@ -37,11 +43,15 @@ export class AuthenticationService {
         new firebase.auth.GoogleAuthProvider()
       ).then(user => {
         this.userDetails = user.user;
+        this.userDetails
+        this.cookieService.set('user', JSON.stringify(this.userDetails));
         this.router.navigate(['home']);
       });
     }
     
     logout(): void {
+      this.cookieService.set('user', '');
+      this.userDetails = undefined;
       this.afAuth.signOut().then();
     }
 

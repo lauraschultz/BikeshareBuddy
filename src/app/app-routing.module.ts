@@ -7,9 +7,9 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'search', component: SearchComponent },
-  { path: 'map/:systemID', component: MapComponent},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent},
+  { path: 'map/:systemID', component: MapComponent},
   { path: '', redirectTo: 'home', pathMatch:'full'}
 ];
 

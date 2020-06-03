@@ -8,6 +8,8 @@
     --background-gradient: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
     --desktop-breakpoint: 600px;
     --gold : #FFD700;
+    --gray: #666;
+    --bike-blue: #0c2d70;
 }
 
 html, body {
@@ -18,7 +20,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card.with-max {
-    margin: 5px;
+    margin: 8px;
 }
 
 
@@ -75,8 +77,8 @@ mat-card.with-max {
 }
 
 .infoWindow .cont .full {
-    background-color: navy;
-    border: 2px solid navy;
+    background-color: var(--bike-blue);
+    border: 2px solid var(--bike-blue);
 }
 
 .infoWindow span.full.moretxt {
@@ -98,6 +100,21 @@ mat-card.with-max {
 .infoWindow .timestamp i{
     font-size: small;
 }
+
+.loading-spinner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:60px;
+}
+
+
+.star .empty {
+    color: var(--gray);
+}
+
+.star .filled {
+    color: var(--gold);
+}
 /* 
 .infoWindow .col {
     display:inline-block;
@@ -117,7 +134,7 @@ mat-card.with-max {
 
 @media only screen and (min-width: 600px) {
     mat-card.with-max{
-        margin:80px auto;
+        margin:65px auto;
         max-width:450px;
     }
     

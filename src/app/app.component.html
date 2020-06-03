@@ -7,7 +7,10 @@
           <span class="navbar-link"><i class="material-icons">search</i>&nbsp;Search</span>
         </a>
         <a routerLink="login">
-          <span class="navbar-link"><i class="material-icons">account_circle</i>&nbsp;Sign in</span>
+          <span class="navbar-link" [ngSwitch]="isLoggedIn()"><i class="material-icons">account_circle</i>&nbsp; 
+            <span *ngSwitchCase="true">Sign out</span>
+            <span *ngSwitchCase="false">Sign in</span>
+          </span>
         </a>
     </mat-toolbar>
   </div>
