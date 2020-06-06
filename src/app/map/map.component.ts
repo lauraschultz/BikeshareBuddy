@@ -13,12 +13,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  @Output() switchToSearch  = new EventEmitter<boolean>()
   title = 'bikeshare';
   private info_window = new google.maps.InfoWindow({content: ''});
   openInfoWindowID: string;
   isFave: boolean;
-  @ViewChild('map', {static:true}) mapElement: any;
+  //  mapElement: any
+  // @ViewChild('map', {static:true}) mapElement: any;
   map: google.maps.Map;
   markers = {};
   infoWindows = {};
@@ -68,7 +68,7 @@ export class MapComponent implements OnInit {
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+    this.map = new google.maps.Map(document.getElementById('map'), mapProperties);
   }
 
   addMarkers(){
