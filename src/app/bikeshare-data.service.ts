@@ -5,7 +5,7 @@ import { Feed, StationInfo, StationStatus } from './response-interfaces';
 import { filter, map, find, mergeMap, catchError, retry, tap } from 'rxjs/operators';
 import { ThrowStmt } from '@angular/compiler';
 import { System } from './system.model';
-import { StationDockInfo } from './map/map.component';
+import { StationDockInfo } from './rtdb.model';
 import { AuthenticationService } from './authentication.service';
 
 
@@ -38,8 +38,6 @@ export class BikeshareDataService {
   // }
 
   getStationInfo(sys?: System): Observable<StationInfo[]> {
-    console.log('sys is', sys);
-    console.log((!sys || sys === this.mapSelectedSystem));
     if(!sys || sys === this.mapSelectedSystem) {
       if(this.mapStationInfoArr) {
         return of(this.mapStationInfoArr)
@@ -80,7 +78,6 @@ export class BikeshareDataService {
       this.mapStationStatusArr = undefined;
       this.mapStationInfoArr = undefined;
     }
-    console.log('system set:', sys)
   }
 
   getSelectedSystem():System {

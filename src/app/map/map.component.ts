@@ -190,14 +190,3 @@ export class MapComponent implements OnInit {
     this.showErrorCard = true;
   }
 }
-
-export class StationDockInfo {
-  full: number;
-  extraFull: number;
-  empty: number;
-  extraEmpty: number;
-
-    public constructor(init?:Partial<StationDockInfo>) {
-      Object.assign(this, init);
-  }
-}

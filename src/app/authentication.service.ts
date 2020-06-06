@@ -88,14 +88,6 @@ export class AuthenticationService {
     return this.afDb.object('users/' + this.userDetails.uid + '/' + sysID + '/' + stationID).remove();
   }
 
-  setFakeData() {
-    this.userDataRef.update({
-      test: 'value',
-      test2: 'this is also a value'
-    });
-    console.log(this.userDataRef);
-  }
-
   getUserData(): Observable<any> {
     if (this.isLoggedIn) {
       const userId = 'users/' + this.userDetails.uid;

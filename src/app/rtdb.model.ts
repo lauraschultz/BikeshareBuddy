@@ -14,3 +14,14 @@ export class UserSystem {
 export class UserStation {
     stationID;
 }
+
+export class StationDockInfo {
+    full: number;
+    extraFull: number;
+    empty: number;
+    extraEmpty: number;
+  
+      public constructor(init?:Partial<StationDockInfo>) {
+        Object.assign(this, init);
+    }
+  }

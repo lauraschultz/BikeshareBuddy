@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { StationStatus, StationInfo } from '../response-interfaces';
 import { BikeshareDataService } from '../bikeshare-data.service';
 import { map, mergeMap, tap } from 'rxjs/operators';
 import { Observable, forkJoin } from 'rxjs';
@@ -38,7 +37,6 @@ export class HomeComponent implements OnInit {
   }
 
   handleStar(system: SystemData, station: StationData) {
-    console.log(this.userData);
     this.authenticationService
       .changeFavorite(system.system.systemID, station.id)
       .then((x) => {

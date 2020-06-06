@@ -10,6 +10,12 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/bikeshare/"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -118,10 +124,6 @@
               "devServerTarget": "bikeshare:serve:production"
             }
           }
-        },
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {}
         }
       }
     }
