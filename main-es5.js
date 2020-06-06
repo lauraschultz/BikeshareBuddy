@@ -276,7 +276,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-root"]],
       decls: 22,
       vars: 3,
-      consts: [["id", "container", 3, "resize"], [1, "row", "navbar"], ["routerLink", ""], ["src", "../assets/bb_logo.svg", 1, "navbar-logo"], [2, "flex", "1 1 auto"], ["routerLink", "search"], [1, "navbar-link"], [1, "material-icons"], ["routerLink", "login"], [1, "navbar-link", 3, "ngSwitch"], [4, "ngSwitchCase"], ["id", "content", 1, "row"], ["id", "footer", 1, "row"], ["id", "attribution"]],
+      consts: [["id", "container", 3, "resize"], [1, "row", "navbar"], ["routerLink", ""], ["src", "./assets/bb_logo.svg", 1, "navbar-logo"], [2, "flex", "1 1 auto"], ["routerLink", "search"], [1, "navbar-link"], [1, "material-icons"], ["routerLink", "login"], [1, "navbar-link", 3, "ngSwitch"], [4, "ngSwitchCase"], ["id", "content", 1, "row"], ["id", "footer", 1, "row"], ["id", "attribution"]],
       template: function AppComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1798,31 +1798,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     });
 
     var backgrounds = [{
-      url: '../assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg',
+      url: './assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg',
       attribution: 'Viviana Rishe',
       hyperlink: 'https://unsplash.com/photos/CeFDIMF4Bu4'
     }, {
-      url: '../assets/bg_images/morgan-von-gunten-Spx31sWjKZE-unsplash.jpg',
+      url: './assets/bg_images/morgan-von-gunten-Spx31sWjKZE-unsplash.jpg',
       attribution: 'Morgan Von Gunten',
       hyperlink: 'https://unsplash.com/photos/Spx31sWjKZE'
     }, {
-      url: '../assets/bg_images/sebastian-herrmann-gPtOEPx_Cjw-unsplash.jpg',
+      url: './assets/bg_images/sebastian-herrmann-gPtOEPx_Cjw-unsplash.jpg',
       attribution: 'Sebastian Herrmann',
       hyperlink: 'https://unsplash.com/photos/gPtOEPx_Cjw'
     }, {
-      url: '../assets/bg_images/viviana-rishe-HukxHhrVeiM-unsplash.jpg',
+      url: './assets/bg_images/viviana-rishe-HukxHhrVeiM-unsplash.jpg',
       attribution: 'Viviana Rishe',
       hyperlink: 'https://unsplash.com/photos/HukxHhrVeiM'
     }, {
-      url: '../assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg',
+      url: './assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg',
       attribution: 'Viviana Rishe',
       hyperlink: 'https://unsplash.com/photos/IOu70_yVBsA'
     }, {
-      url: '../assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg',
+      url: './assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg',
       attribution: 'Victor Xok',
       hyperlink: 'https://unsplash.com/photos/Gi0OMNguFaw'
     }, {
-      url: '../assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg',
+      url: './assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg',
       attribution: 'Everton Vila',
       hyperlink: 'https://unsplash.com/photos/AsahNlC0VhQ'
     }];
@@ -2332,7 +2332,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this14 = this;
 
           var markerProperties = {
-            map: this.map // icon: '../../assets/place-24px.png'
+            map: this.map // icon: '.././assets/place-24px.png'
 
           };
           this.bikeshareDataService.mapStationInfoArr.forEach(function (station) {
@@ -2502,7 +2502,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_7__["MatSpinner"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgSwitchCase"], _error_card_error_card_component__WEBPACK_IMPORTED_MODULE_8__["ErrorCardComponent"]],
-      styles: ["#map-container[_ngcontent-%COMP%] {\n    height:100%;\n}\n\n#map-container[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n    height:100%!important;\n}\n\n#star-container[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom:10px;\n    left:10px;\n    padding:12px;\n    background-color: white;\n    z-index: 1;\n    border-radius:3px;\n    box-shadow: 0 0 4px rgba(0,0,0,0.2);\n}\n\n#star-container[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n    font-weight: bold;\n    border-bottom: 1px solid #e6e6e6;\n    padding-bottom: 5px;\n}\n\n#star-container[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%] {\n    padding: 0 5px;\n}\n\n#star-container[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    cursor: pointer;\n}\n\n#star-container[_ngcontent-%COMP%]   .col[_ngcontent-%COMP%] {\n    display: inline-block;\n}\n\n.star.col[_ngcontent-%COMP%] {\n    padding:8px 0 8px 8px;\n}\n\n.desc.col[_ngcontent-%COMP%] {\n    padding:8px 8px 0 0;\n}\n\n#star-container[_ngcontent-%COMP%]   .desc[_ngcontent-%COMP%] {\n    font-size: smaller;\n    color: var(--gray);\n}\n\n#footer[_ngcontent-%COMP%] {\n    display:none!important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFwL21hcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0kscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTO0lBQ1QsWUFBWTtJQUNaLHVCQUF1QjtJQUN2QixVQUFVO0lBQ1YsaUJBQWlCO0lBQ2pCLG1DQUFtQztBQUN2Qzs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQixnQ0FBZ0M7SUFDaEMsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksY0FBYztBQUNsQjs7QUFFQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksc0JBQXNCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvbWFwL21hcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI21hcC1jb250YWluZXIge1xuICAgIGhlaWdodDoxMDAlO1xufVxuXG4jbWFwLWNvbnRhaW5lciBkaXYge1xuICAgIGhlaWdodDoxMDAlIWltcG9ydGFudDtcbn1cblxuI3N0YXItY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgYm90dG9tOjEwcHg7XG4gICAgbGVmdDoxMHB4O1xuICAgIHBhZGRpbmc6MTJweDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICB6LWluZGV4OiAxO1xuICAgIGJvcmRlci1yYWRpdXM6M3B4O1xuICAgIGJveC1zaGFkb3c6IDAgMCA0cHggcmdiYSgwLDAsMCwwLjIpO1xufVxuXG4jc3Rhci1jb250YWluZXIgLnRpdGxlIHtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2U2ZTZlNjtcbiAgICBwYWRkaW5nLWJvdHRvbTogNXB4O1xufVxuXG4jc3Rhci1jb250YWluZXIgLnN0YXIge1xuICAgIHBhZGRpbmc6IDAgNXB4O1xufVxuXG4jc3Rhci1jb250YWluZXIgLnN0YXIgaSB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xufVxuXG4jc3Rhci1jb250YWluZXIgLmNvbCB7XG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xufVxuXG4uc3Rhci5jb2wge1xuICAgIHBhZGRpbmc6OHB4IDAgOHB4IDhweDtcbn1cblxuLmRlc2MuY29sIHtcbiAgICBwYWRkaW5nOjhweCA4cHggMCAwO1xufVxuXG4jc3Rhci1jb250YWluZXIgLmRlc2Mge1xuICAgIGZvbnQtc2l6ZTogc21hbGxlcjtcbiAgICBjb2xvcjogdmFyKC0tZ3JheSk7XG59XG5cbiNmb290ZXIge1xuICAgIGRpc3BsYXk6bm9uZSFpbXBvcnRhbnQ7XG59XG5cbiJdfQ== */"]
+      styles: ["#map-container[_ngcontent-%COMP%] {\n    height:100%;\n}\n\n#map-container[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n    height:100%!important;\n}\n\n#star-container[_ngcontent-%COMP%] {\n    position: absolute;\n    bottom:10px;\n    left:10px;\n    padding:12px;\n    background-color: white;\n    z-index: 1;\n    border-radius:3px;\n    box-shadow: 0 0 4px rgba(0,0,0,0.2);\n}\n\n#star-container[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n    font-weight: bold;\n    border-bottom: 1px solid #e6e6e6;\n    padding-bottom: 5px;\n}\n\n#star-container[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%] {\n    padding: 0 5px;\n}\n\n#star-container[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    cursor: pointer;\n}\n\n#star-container[_ngcontent-%COMP%]   .col[_ngcontent-%COMP%] {\n    display: inline-block;\n}\n\n.star.col[_ngcontent-%COMP%] {\n    padding:8px 0 8px 8px;\n}\n\n.desc.col[_ngcontent-%COMP%] {\n    padding:8px 8px 0 0;\n}\n\n#star-container[_ngcontent-%COMP%]   .desc[_ngcontent-%COMP%] {\n    font-size: smaller;\n    color: var(--gray);\n}\n\n#footer[_ngcontent-%COMP%] {\n    display:none!important;\n}\n\n#map[_ngcontent-%COMP%] {\n    height:100%;   \n    width:100%;\n    background-color: orange;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFwL21hcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0kscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTO0lBQ1QsWUFBWTtJQUNaLHVCQUF1QjtJQUN2QixVQUFVO0lBQ1YsaUJBQWlCO0lBQ2pCLG1DQUFtQztBQUN2Qzs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQixnQ0FBZ0M7SUFDaEMsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksY0FBYztBQUNsQjs7QUFFQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxxQkFBcUI7QUFDekI7O0FBRUE7SUFDSSxtQkFBbUI7QUFDdkI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksV0FBVztJQUNYLFVBQVU7SUFDVix3QkFBd0I7QUFDNUIiLCJmaWxlIjoic3JjL2FwcC9tYXAvbWFwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWFwLWNvbnRhaW5lciB7XG4gICAgaGVpZ2h0OjEwMCU7XG59XG5cbiNtYXAtY29udGFpbmVyIGRpdiB7XG4gICAgaGVpZ2h0OjEwMCUhaW1wb3J0YW50O1xufVxuXG4jc3Rhci1jb250YWluZXIge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206MTBweDtcbiAgICBsZWZ0OjEwcHg7XG4gICAgcGFkZGluZzoxMnB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAgIHotaW5kZXg6IDE7XG4gICAgYm9yZGVyLXJhZGl1czozcHg7XG4gICAgYm94LXNoYWRvdzogMCAwIDRweCByZ2JhKDAsMCwwLDAuMik7XG59XG5cbiNzdGFyLWNvbnRhaW5lciAudGl0bGUge1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZTZlNmU2O1xuICAgIHBhZGRpbmctYm90dG9tOiA1cHg7XG59XG5cbiNzdGFyLWNvbnRhaW5lciAuc3RhciB7XG4gICAgcGFkZGluZzogMCA1cHg7XG59XG5cbiNzdGFyLWNvbnRhaW5lciAuc3RhciBpIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbiNzdGFyLWNvbnRhaW5lciAuY29sIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG5cbi5zdGFyLmNvbCB7XG4gICAgcGFkZGluZzo4cHggMCA4cHggOHB4O1xufVxuXG4uZGVzYy5jb2wge1xuICAgIHBhZGRpbmc6OHB4IDhweCAwIDA7XG59XG5cbiNzdGFyLWNvbnRhaW5lciAuZGVzYyB7XG4gICAgZm9udC1zaXplOiBzbWFsbGVyO1xuICAgIGNvbG9yOiB2YXIoLS1ncmF5KTtcbn1cblxuI2Zvb3RlciB7XG4gICAgZGlzcGxheTpub25lIWltcG9ydGFudDtcbn1cblxuI21hcCB7XG4gICAgaGVpZ2h0OjEwMCU7ICAgXG4gICAgd2lkdGg6MTAwJTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBvcmFuZ2U7XG59XG5cbiJdfQ== */"]
     });
     /*@__PURE__*/
 
@@ -2765,7 +2765,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.bikeshareDataService = bikeshareDataService;
         this.route = route;
         this.router = router;
-        this.switchToMap = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.errorSelectSystem = false;
       }
 
@@ -2821,9 +2820,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     SearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: SearchComponent,
       selectors: [["app-search"]],
-      outputs: {
-        switchToMap: "switchToMap"
-      },
       decls: 24,
       vars: 2,
       consts: [[1, "with-max"], [1, "material-icons"], [1, "light"], [2, "width", "100%"], ["type", "text", "matInput", "", 3, "keyup"], [1, "search-results"], ["class", "result", 3, "selected", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "next-button", 3, "click"], ["class", "error-text", 4, "ngIf"], [1, "result", 3, "click"], [1, "error-text"]],
@@ -2945,11 +2941,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }];
-      }, {
-        switchToMap: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
-        }]
-      });
+      }, null);
     })();
     /***/
 
