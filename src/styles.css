@@ -134,7 +134,7 @@ mat-card.with-max {
 
 @media only screen and (min-width: 600px) {
     mat-card.with-max{
-        margin:65px auto;
+        margin:45px auto;
         max-width:450px;
     }
     

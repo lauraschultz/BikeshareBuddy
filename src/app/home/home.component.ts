@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
   userInfo: firebase.User;
   userData: SystemData[] = [];
   pageLoading = true;
-  systems = {};
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -28,7 +27,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log(this.authenticationService.userDetails);
     if (!this.authenticationService.isLoggedIn()) {
       this.router.navigate(['search']);
     } else {
@@ -40,6 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   handleStar(system: SystemData, station: StationData) {
+    console.log(this.userData);
     this.authenticationService
       .changeFavorite(system.system.systemID, station.id)
       .then((x) => {
@@ -49,27 +48,32 @@ export class HomeComponent implements OnInit {
         this.snackBar.open(message, 'Dismiss', {
           duration: 3000,
         });
-        const r = this.userData.find((sys) => sys === system);
-        r.stations.forEach((st) => {
-          if (st === station) {
-            st.favorite = x;
+        this.userData.map(s => {
+          if(s.system === system.system){
+            return s.stations.map(st => {
+              if(st.id === station.id){
+                st.favorite = x;
+              }
+              return st;
+            })
           }
-        });
+          return s;
+        })
+        // this.systems[system.system.systemID].stations.map(st => {
+        //   if(st.station_id === station.id){station.favorite = x;}
+        // });
+        // const r = this.userData.find((sys) => sys === system);
+        // r.stations.forEach((st) => {
+        //   if (st === station) {
+        //     st.favorite = x;
+        //   }
+        // });
       });
 
-    // this.userData.forEach(sys => {
-    //   if(sys.system.systemID === systemID){
-    //     sys.stations.filter(station => station.id !== stationID);
-    //   }});
   }
-
-  // isFavorite(systemID: string, stationID: string): boolean {
-  //   return this.authenticationService.isFavorite(systemID, stationID);
-  // }
 
   goToMap(sys: System): void {
     this.bikeshareDataService.setSelectedSystem(sys);
-    console.log(this.bikeshareDataService.getSelectedSystem().systemID);
     this.router.navigate(['map', sys.systemID]);
   }
 
@@ -127,12 +131,6 @@ export class HomeComponent implements OnInit {
     return this.bikeshareDataService.getSystemByID(sysID);
   }
 
-  // getStationInfo(sysID: string, stationID: string):
-
-  // getStationStatus(sysID: string, stationID: string): StationStatus {
-  //   const results = this.systems[sysID].filter(station => station.station_id === stationID);
-  //   return (results.length == 0 ? undefined : results[0]);
-  // }
 }
 
 export class SystemData {

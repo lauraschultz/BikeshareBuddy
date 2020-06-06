@@ -38,6 +38,8 @@ export class BikeshareDataService {
   // }
 
   getStationInfo(sys?: System): Observable<StationInfo[]> {
+    console.log('sys is', sys);
+    console.log((!sys || sys === this.mapSelectedSystem));
     if(!sys || sys === this.mapSelectedSystem) {
       if(this.mapStationInfoArr) {
         return of(this.mapStationInfoArr)
