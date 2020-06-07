@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ErrorCardComponent implements OnInit, OnDestroy {
   numSeconds = 10;
+  s = 's';
   runCountdown;
 
   constructor(private route: ActivatedRoute,
@@ -23,6 +24,7 @@ export class ErrorCardComponent implements OnInit, OnDestroy {
         this.router.navigate(['search']);
       } else {
         this.numSeconds--;
+        this.s = (this.numSeconds === 1 ? '' : 's');
       }
     }
 
