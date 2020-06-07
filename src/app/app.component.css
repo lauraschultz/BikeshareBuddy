@@ -1,92 +1,95 @@
 :host {
-    min-height:100vh;
+  min-height: 100vh;
 }
 
-
 #container {
-    height:100%;
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  height: 100%;
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
   flex-flow: column;
 }
 
 .navbar {
-    flex: 0 1 auto;
+  flex: 0 1 auto;
 }
 
 .navbar .mat-toolbar-single-row {
-    height:auto!important;
-    padding:5px 10px!important;
+  height: auto !important;
+  padding: 5px 10px !important;
 }
 
 .navbar-link {
-    font-size: small;
-    color: var(--light);
-    padding:8px;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  font-size: small;
+  color: var(--light);
+  padding: 8px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-.navbar a{
-    text-decoration: none!important;
+.navbar a {
+  text-decoration: none !important;
 }
 
 #content {
-    flex: 1 1 auto;
-    background-image: var(--background-gradient);
-    overflow-y:scroll;
-    position: relative;
+  flex: 1 1 auto;
+  background-image: var(--background-gradient);
+  overflow-y: scroll;
+  position: relative;
 }
 
 mat-toolbar {
-    background-color: var(--navbar-dark);
+  background-color: var(--navbar-dark);
 }
 
 .navbar-logo {
-    height:50px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+  height: 50px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-.navbar a{
-    margin-bottom: -6px;  /* why does it do this :( */
+.navbar a {
+  margin-bottom: -6px; /* why does it do this :( */
 }
 
 #footer {
-    display:none;
-    background-color: var(--light);
-    padding:20px;
+  display: none;
 }
 
 @media only screen and (min-width: 600px) {
-    #content {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size:cover;
-    }
-    
-    .navbar-logo {
-        height:65px;
-    }
+  #content {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
-    .navbar-link {
-        font-size: smaller;
-        padding:10px;
-    }
+  .navbar-logo {
+    height: 65px;
+  }
 
-    .navbar .mat-toolbar-single-row {
-        padding:10px 16px!important;
-    }
+  .navbar-link {
+    font-size: smaller;
+    padding: 10px;
+  }
 
-    #footer #attribution {
-        float:right;
-        font-size: small;
-        color: var(--navbar-dark);
-    }
+  .navbar .mat-toolbar-single-row {
+    padding: 10px 16px !important;
+  }
 
-    #footer #attribution a {
-        color:var(--navbar-dark);
-        text-decoration: none;
-    }
+  #footer {
+    display: inline;
+    background-color: var(--light);
+    padding: 20px;
+  }
+
+  #footer #attribution {
+    float: right;
+    font-size: small;
+    color: var(--navbar-dark);
+  }
+
+  #footer #attribution a {
+    color: var(--navbar-dark);
+    text-decoration: none;
+  }
 }

@@ -38,13 +38,3 @@ button.next-button {
     background-color: var(--navbar-dark);
     color: var(--light);
 }
-
-@media only screen and (min-width: 600px) {
-    .search-results {
-        max-height: 300px;
-    }
-
-    #footer {
-        display:inline;
-    }
-}
