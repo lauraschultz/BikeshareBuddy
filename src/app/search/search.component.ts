@@ -10,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  @Output() switchToMap  = new EventEmitter<boolean>()
   searchResults: System[];
   errorSelectSystem = false;
   selectedSystem: System;

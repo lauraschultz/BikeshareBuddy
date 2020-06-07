@@ -1,5 +1,14 @@
+:host {
+    min-height: 100%;
+    /* display: flex; */
+}
+
 #map-container {
     height:100%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 #map-container div {
@@ -48,7 +57,9 @@
     color: var(--gray);
 }
 
-#footer {
-    display:none!important;
+#map {
+    height:100%;   
+    width:100%;
 }
+
 

@@ -1,3 +1,8 @@
+:host {
+    min-height:100vh;
+}
+
+
 #container {
     height:100%;
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -50,6 +55,8 @@ mat-toolbar {
 
 #footer {
     display:none;
+    background-color: var(--light);
+    padding:20px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -70,12 +77,6 @@ mat-toolbar {
 
     .navbar .mat-toolbar-single-row {
         padding:10px 16px!important;
-    }
-
-    #footer {
-        background-color: var(--light);
-        display: inline;
-        padding:20px;
     }
 
     #footer #attribution {
