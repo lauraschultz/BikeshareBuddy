@@ -2325,6 +2325,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
           this.map = new google.maps.Map(document.getElementById('map'), mapProperties);
+          console.log('map is', this.map);
         }
       }, {
         key: "addMarkers",
@@ -2338,6 +2339,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.bikeshareDataService.mapStationInfoArr.forEach(function (station) {
             markerProperties['position'] = new google.maps.LatLng(station.lat, station.lon);
             _this14.markers[station.station_id] = new _marker_Model__WEBPACK_IMPORTED_MODULE_1__["Marker"](station.name, new google.maps.Marker(markerProperties));
+            console.log('added marker: ', _this14.markers[station.station_id]);
           });
         }
       }, {
@@ -2425,6 +2427,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this17 = this;
 
           this.bikeshareDataService.getStationInfo().subscribe(function (x) {
+            console.log('station info is', x);
+
             if (x === []) {
               _this17.handleError();
             } else {
@@ -2444,6 +2448,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this18 = this;
 
           this.bikeshareDataService.getStationStatus().subscribe(function (x) {
+            console.log('station status is', x);
+
             _this18.addMarkers();
 
             _this18.addInfoWindows();

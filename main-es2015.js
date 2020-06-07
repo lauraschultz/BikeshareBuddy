@@ -1236,6 +1236,7 @@ class MapComponent {
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         this.map = new google.maps.Map(document.getElementById('map'), mapProperties);
+        console.log('map is', this.map);
     }
     addMarkers() {
         let markerProperties = {
@@ -1245,6 +1246,7 @@ class MapComponent {
         this.bikeshareDataService.mapStationInfoArr.forEach(station => {
             markerProperties['position'] = new google.maps.LatLng(station.lat, station.lon);
             this.markers[station.station_id] = new _marker_Model__WEBPACK_IMPORTED_MODULE_1__["Marker"](station.name, new google.maps.Marker(markerProperties));
+            console.log('added marker: ', this.markers[station.station_id]);
         });
     }
     handleStar() {
@@ -1310,6 +1312,7 @@ class MapComponent {
     getStationInfo() {
         this.bikeshareDataService.getStationInfo()
             .subscribe(x => {
+            console.log('station info is', x);
             if (x === []) {
                 this.handleError();
             }
@@ -1324,6 +1327,7 @@ class MapComponent {
     getStationStatus() {
         this.bikeshareDataService.getStationStatus()
             .subscribe(x => {
+            console.log('station status is', x);
             this.addMarkers();
             this.addInfoWindows();
             this.pageLoading = false;
