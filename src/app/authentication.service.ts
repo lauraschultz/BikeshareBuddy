@@ -94,7 +94,9 @@ export class AuthenticationService {
       // console.log(userId);
       this.userDataRef = this.afDb.object(userId);
       // console.log('userdataref:', this.userDataRef);
-      this.userData = this.afDb.object(userId).valueChanges().pipe(take(1));
+      this.userData = this.afDb.object(userId).valueChanges().pipe(
+        take(1)
+        );
       // console.log(this.afDb.object(userId).valueChanges())
       return this.userData;
     }

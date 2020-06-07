@@ -5,12 +5,9 @@
     </mat-card-title>
     <mat-spinner *ngIf="pageLoading" class="loading-spinner"></mat-spinner>
     <mat-card-content>
-        <!-- <div *ngFor="let system of userData | keyvalue">
-            {{system.key}}
-            <div *ngFor="let station of system.value | keyvalue">
-                {{station.key}}
-            </div>
-        </div> -->
+        <div *ngIf="!pageLoading && userData.length===0" class="msg">
+            It looks like you haven't added any favorite stations yet! Head to the <a [routerLink]="['../search']">search page</a> and find a bikeshare system to get started.
+        </div>
 
         <div *ngFor="let sys of userData" class="system">
             <h2>

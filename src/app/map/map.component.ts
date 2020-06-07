@@ -69,19 +69,17 @@ export class MapComponent implements OnInit {
       mapTypeId: google.maps.MapTypeId.ROADMAP
   };
     this.map = new google.maps.Map(document.getElementById('map'), mapProperties);
-    console.log('map is', this.map);
   }
 
   addMarkers(){
     let markerProperties = {
       map: this.map
-      // icon: '../../assets/place-24px.png'
+      // icon: '.././assets/place-24px.png'
     }
     this.bikeshareDataService.mapStationInfoArr.forEach(station => 
         {
           markerProperties['position'] = new google.maps.LatLng(station.lat, station.lon);
           this.markers[station.station_id] = new Marker(station.name, new google.maps.Marker(markerProperties));
-          console.log('added marker: ', this.markers[station.station_id]);
     });
   }
 
@@ -164,7 +162,6 @@ export class MapComponent implements OnInit {
     this.bikeshareDataService.getStationInfo()
       .subscribe(x =>
         {
-          console.log('station info is', x);
           if(x === []){
             this.handleError();
           } else {
@@ -181,7 +178,6 @@ export class MapComponent implements OnInit {
     this.bikeshareDataService.getStationStatus()
       .subscribe(x => 
         {
-          console.log('station status is', x);
           this.addMarkers();
           this.addInfoWindows();
           this.pageLoading = false;

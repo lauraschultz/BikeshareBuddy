@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private bikeshareDataService: BikeshareDataService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (!this.authenticationService.isLoggedIn()) {
@@ -47,9 +47,9 @@ export class HomeComponent implements OnInit {
           duration: 3000,
         });
         this.userData.map(s => {
-          if(s.system === system.system){
+          if (s.system === system.system) {
             return s.stations.map(st => {
-              if(st.id === station.id){
+              if (st.id === station.id) {
                 st.favorite = x;
               }
               return st;
@@ -76,53 +76,56 @@ export class HomeComponent implements OnInit {
   }
 
   createUserSavedData(obj: any): void {
-    for (let [key, value] of Object.entries(obj)) {
-      // for each system
-      let sysData = new SystemData({ stations: [] });
-      this.getSystemFromId(key)
-        .pipe(
-          mergeMap((s) =>
-            forkJoin(
-              this.bikeshareDataService.getStationInfo(s),
-              this.bikeshareDataService.getStationStatus(s)
-            ).pipe(
-              map((systemData) => {
-                sysData.system = s;
-                for (let [station, _] of Object.entries(value)) {
-                  const result = systemData[0].filter(
-                    (s) => s.station_id === station
-                  )[0];
-                  sysData.stations.push(
-                    new StationData({
-                      name: result.name,
-                      id: result.station_id,
-                      displayHtml: this.bikeshareDataService.generateInfoWindowHTML(
-                        systemData[1].filter(
-                          (x) => x.station_id === station
-                        )[0],
-                        s.systemID
-                      ),
-                      favorite: true,
-                    })
-                  );
-                  // this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0], s.systemID)
-                  //   .then(html => {
-                  //     sysData.stations.push( new StationData({
-                  //       name: systemData[0].filter(s => s.station_id === station)[0].name,
-                  //       displayHtml: html
-                  //     }));
-                  //   });
-                }
-                return sysData;
-              })
+    if (obj) {
+      for (let [key, value] of Object.entries(obj)) {
+        // for each system
+        let sysData = new SystemData({ stations: [] });
+        this.getSystemFromId(key)
+          .pipe(
+            mergeMap((s) =>
+              forkJoin(
+                this.bikeshareDataService.getStationInfo(s),
+                this.bikeshareDataService.getStationStatus(s)
+              ).pipe(
+                map((systemData) => {
+                  sysData.system = s;
+                  for (let [station, _] of Object.entries(value)) {
+                    const result = systemData[0].filter(
+                      (s) => s.station_id === station
+                    )[0];
+                    sysData.stations.push(
+                      new StationData({
+                        name: result.name,
+                        id: result.station_id,
+                        displayHtml: this.bikeshareDataService.generateInfoWindowHTML(
+                          systemData[1].filter(
+                            (x) => x.station_id === station
+                          )[0],
+                          s.systemID
+                        ),
+                        favorite: true,
+                      })
+                    );
+                    // this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0], s.systemID)
+                    //   .then(html => {
+                    //     sysData.stations.push( new StationData({
+                    //       name: systemData[0].filter(s => s.station_id === station)[0].name,
+                    //       displayHtml: html
+                    //     }));
+                    //   });
+                  }
+                  return sysData;
+                })
+              )
             )
           )
-        )
-        .subscribe((x) => {
-          this.userData.push(x);
-          this.pageLoading = false;
-        });
+          .subscribe((x) => {
+            this.userData.push(x);
+            this.pageLoading = false;
+          });
+      }
     }
+    this.pageLoading = false;
   }
 
   getSystemFromId(sysID: string): Observable<System> {
