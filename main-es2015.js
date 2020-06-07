@@ -132,7 +132,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_authentication_service__WEBPACK_IMPORTED_MODULE_2__["AuthenticationService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 22, vars: 3, consts: [["id", "container", 3, "resize"], [1, "row", "navbar"], ["routerLink", ""], ["src", "../assets/bb_logo.svg", 1, "navbar-logo"], [2, "flex", "1 1 auto"], ["routerLink", "search"], [1, "navbar-link"], [1, "material-icons"], ["routerLink", "login"], [1, "navbar-link", 3, "ngSwitch"], [4, "ngSwitchCase"], ["id", "content", 1, "row"], ["id", "footer", 1, "row"], ["id", "attribution"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 22, vars: 3, consts: [["id", "container", 3, "resize"], [1, "row", "navbar"], ["routerLink", ""], ["src", "./assets/bb_logo.svg", 1, "navbar-logo"], [2, "flex", "1 1 auto"], ["routerLink", "search"], [1, "navbar-link"], [1, "material-icons"], ["routerLink", "login"], [1, "navbar-link", 3, "ngSwitch"], [4, "ngSwitchCase"], ["id", "content", 1, "row"], ["id", "footer", 1, "row"], ["id", "attribution"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("resize", function AppComponent_Template_div_resize_0_listener() { return ctx.onResize(); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -951,37 +951,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "backgrounds", function() { return backgrounds; });
 var backgrounds = [
     {
-        url: '../assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg',
+        url: './assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg',
         attribution: 'Viviana Rishe',
         hyperlink: 'https://unsplash.com/photos/CeFDIMF4Bu4'
     },
     {
-        url: '../assets/bg_images/morgan-von-gunten-Spx31sWjKZE-unsplash.jpg',
+        url: './assets/bg_images/morgan-von-gunten-Spx31sWjKZE-unsplash.jpg',
         attribution: 'Morgan Von Gunten',
         hyperlink: 'https://unsplash.com/photos/Spx31sWjKZE'
     },
     {
-        url: '../assets/bg_images/sebastian-herrmann-gPtOEPx_Cjw-unsplash.jpg',
+        url: './assets/bg_images/sebastian-herrmann-gPtOEPx_Cjw-unsplash.jpg',
         attribution: 'Sebastian Herrmann',
         hyperlink: 'https://unsplash.com/photos/gPtOEPx_Cjw'
     },
     {
-        url: '../assets/bg_images/viviana-rishe-HukxHhrVeiM-unsplash.jpg',
+        url: './assets/bg_images/viviana-rishe-HukxHhrVeiM-unsplash.jpg',
         attribution: 'Viviana Rishe',
         hyperlink: 'https://unsplash.com/photos/HukxHhrVeiM'
     },
     {
-        url: '../assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg',
+        url: './assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg',
         attribution: 'Viviana Rishe',
         hyperlink: 'https://unsplash.com/photos/IOu70_yVBsA'
     },
     {
-        url: '../assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg',
+        url: './assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg',
         attribution: 'Victor Xok',
         hyperlink: 'https://unsplash.com/photos/Gi0OMNguFaw'
     },
     {
-        url: '../assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg',
+        url: './assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg',
         attribution: 'Everton Vila',
         hyperlink: 'https://unsplash.com/photos/AsahNlC0VhQ'
     }
@@ -1241,7 +1241,7 @@ class MapComponent {
     addMarkers() {
         let markerProperties = {
             map: this.map
-            // icon: '../../assets/place-24px.png'
+            // icon: '.././assets/place-24px.png'
         };
         this.bikeshareDataService.mapStationInfoArr.forEach(station => {
             markerProperties['position'] = new google.maps.LatLng(station.lat, station.lon);
