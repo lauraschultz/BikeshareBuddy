@@ -1386,7 +1386,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card-title");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "i", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "i", 5);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "pedal_bike");
 
@@ -1408,13 +1408,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function HomeComponent_mat_spinner_2_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-spinner", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-spinner", 6);
       }
     }
 
-    function HomeComponent_div_4_div_7_span_3_Template(rf, ctx) {
+    var _c0 = function _c0() {
+      return ["../search"];
+    };
+
+    function HomeComponent_div_4_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " It looks like you haven't added any favorite stations yet! Head to the ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "a", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "search page");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " and find a bikeshare system to get started. ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](1, _c0));
+      }
+    }
+
+    function HomeComponent_div_5_div_7_span_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 21);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "star");
 
@@ -1422,9 +1450,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function HomeComponent_div_4_div_7_span_4_Template(rf, ctx) {
+    function HomeComponent_div_5_div_7_span_4_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 22);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "star_outline");
 
@@ -1432,45 +1460,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function HomeComponent_div_4_div_7_Template(rf, ctx) {
+    function HomeComponent_div_5_div_7_Template(rf, ctx) {
       if (rf & 1) {
-        var _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 13);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 14);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "i", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "i", 15);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeComponent_div_4_div_7_Template_i_click_2_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeComponent_div_5_div_7_Template_i_click_2_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11);
 
-          var station_r5 = ctx.$implicit;
+          var station_r6 = ctx.$implicit;
 
-          var sys_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+          var sys_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-          var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r8.handleStar(sys_r3, station_r5);
+          return ctx_r9.handleStar(sys_r4, station_r6);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HomeComponent_div_4_div_7_span_3_Template, 2, 0, "span", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HomeComponent_div_5_div_7_span_3_Template, 2, 0, "span", 16);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HomeComponent_div_4_div_7_span_4_Template, 2, 0, "span", 14);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HomeComponent_div_5_div_7_span_4_Template, 2, 0, "span", 17);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 18);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 19);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "div", 20);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1478,11 +1506,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var station_r5 = ctx.$implicit;
+        var station_r6 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", station_r5.favorite);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngSwitch", station_r6.favorite);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -1494,39 +1522,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](station_r5.name);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](station_r6.name);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("innerHtml", station_r5.displayHtml, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeHtml"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("innerHtml", station_r6.displayHtml, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeHtml"]);
       }
     }
 
-    function HomeComponent_div_4_Template(rf, ctx) {
+    function HomeComponent_div_5_Template(rf, ctx) {
       if (rf & 1) {
-        var _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 10);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeComponent_div_4_Template_button_click_3_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeComponent_div_5_Template_button_click_3_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13);
 
-          var sys_r3 = ctx.$implicit;
+          var sys_r4 = ctx.$implicit;
 
-          var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r11.goToMap(sys_r3.system);
+          return ctx_r12.goToMap(sys_r4.system);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Go to map ");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "i", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "i", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "forward");
 
@@ -1536,21 +1564,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, HomeComponent_div_4_div_7_Template, 9, 5, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, HomeComponent_div_5_div_7_Template, 9, 5, "div", 12);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var sys_r3 = ctx.$implicit;
+        var sys_r4 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", sys_r3.system.systemName, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", sys_r4.system.systemName, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", sys_r3.stations);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", sys_r4.stations);
       }
     }
 
@@ -1628,60 +1656,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function createUserSavedData(obj) {
           var _this11 = this;
 
-          var _loop = function _loop() {
-            var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
-                key = _Object$entries$_i[0],
-                value = _Object$entries$_i[1];
+          if (obj) {
+            var _loop = function _loop() {
+              var _Object$entries$_i = _slicedToArray(_Object$entries[_i2], 2),
+                  key = _Object$entries$_i[0],
+                  value = _Object$entries$_i[1];
 
-            // for each system
-            var sysData = new SystemData({
-              stations: []
-            });
+              // for each system
+              var sysData = new SystemData({
+                stations: []
+              });
 
-            _this11.getSystemFromId(key).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mergeMap"])(function (s) {
-              return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(_this11.bikeshareDataService.getStationInfo(s), _this11.bikeshareDataService.getStationStatus(s)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (systemData) {
-                sysData.system = s;
+              _this11.getSystemFromId(key).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mergeMap"])(function (s) {
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(_this11.bikeshareDataService.getStationInfo(s), _this11.bikeshareDataService.getStationStatus(s)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (systemData) {
+                  sysData.system = s;
 
-                var _loop2 = function _loop2() {
-                  var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i3], 2),
-                      station = _Object$entries2$_i[0],
-                      _ = _Object$entries2$_i[1];
+                  var _loop2 = function _loop2() {
+                    var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i3], 2),
+                        station = _Object$entries2$_i[0],
+                        _ = _Object$entries2$_i[1];
 
-                  var result = systemData[0].filter(function (s) {
-                    return s.station_id === station;
-                  })[0];
-                  sysData.stations.push(new StationData({
-                    name: result.name,
-                    id: result.station_id,
-                    displayHtml: _this11.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(function (x) {
-                      return x.station_id === station;
-                    })[0], s.systemID),
-                    favorite: true
-                  })); // this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0], s.systemID)
-                  //   .then(html => {
-                  //     sysData.stations.push( new StationData({
-                  //       name: systemData[0].filter(s => s.station_id === station)[0].name,
-                  //       displayHtml: html
-                  //     }));
-                  //   });
-                };
+                    var result = systemData[0].filter(function (s) {
+                      return s.station_id === station;
+                    })[0];
+                    sysData.stations.push(new StationData({
+                      name: result.name,
+                      id: result.station_id,
+                      displayHtml: _this11.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(function (x) {
+                        return x.station_id === station;
+                      })[0], s.systemID),
+                      favorite: true
+                    })); // this.bikeshareDataService.generateInfoWindowHTML(systemData[1].filter(x => x.station_id === station)[0], s.systemID)
+                    //   .then(html => {
+                    //     sysData.stations.push( new StationData({
+                    //       name: systemData[0].filter(s => s.station_id === station)[0].name,
+                    //       displayHtml: html
+                    //     }));
+                    //   });
+                  };
 
-                for (var _i3 = 0, _Object$entries2 = Object.entries(value); _i3 < _Object$entries2.length; _i3++) {
-                  _loop2();
-                }
+                  for (var _i3 = 0, _Object$entries2 = Object.entries(value); _i3 < _Object$entries2.length; _i3++) {
+                    _loop2();
+                  }
 
-                return sysData;
-              }));
-            })).subscribe(function (x) {
-              _this11.userData.push(x);
+                  return sysData;
+                }));
+              })).subscribe(function (x) {
+                _this11.userData.push(x);
 
-              _this11.pageLoading = false;
-            });
-          };
+                _this11.pageLoading = false;
+              });
+            };
 
-          for (var _i2 = 0, _Object$entries = Object.entries(obj); _i2 < _Object$entries.length; _i2++) {
-            _loop();
+            for (var _i2 = 0, _Object$entries = Object.entries(obj); _i2 < _Object$entries.length; _i2++) {
+              _loop();
+            }
           }
+
+          this.pageLoading = false;
         }
       }, {
         key: "getSystemFromId",
@@ -1700,9 +1732,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: HomeComponent,
       selectors: [["app-home"]],
-      decls: 5,
-      vars: 3,
-      consts: [[1, "with-max"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], ["class", "system", 4, "ngFor", "ngForOf"], [1, "material-icons", 2, "font-size", "larger"], [1, "loading-spinner"], [1, "system"], [1, "mat-raised-button", "map-button", 3, "click"], [1, "material-icons"], ["class", "content", 4, "ngFor", "ngForOf"], [1, "content"], [1, "star"], [1, "material-icons", 3, "ngSwitch", "click"], ["class", "filled", 4, "ngSwitchCase"], ["class", "empty", 4, "ngSwitchCase"], [1, "infoWindow"], [1, "title"], [1, "status", 3, "innerHtml"], [1, "filled"], [1, "empty"]],
+      decls: 6,
+      vars: 4,
+      consts: [[1, "with-max"], [4, "ngIf"], ["class", "loading-spinner", 4, "ngIf"], ["class", "msg", 4, "ngIf"], ["class", "system", 4, "ngFor", "ngForOf"], [1, "material-icons", 2, "font-size", "larger"], [1, "loading-spinner"], [1, "msg"], [3, "routerLink"], [1, "system"], [1, "mat-raised-button", "map-button", 3, "click"], [1, "material-icons"], ["class", "content", 4, "ngFor", "ngForOf"], [1, "content"], [1, "star"], [1, "material-icons", 3, "ngSwitch", "click"], ["class", "filled", 4, "ngSwitchCase"], ["class", "empty", 4, "ngSwitchCase"], [1, "infoWindow"], [1, "title"], [1, "status", 3, "innerHtml"], [1, "filled"], [1, "empty"]],
       template: function HomeComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 0);
@@ -1713,7 +1745,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "mat-card-content");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HomeComponent_div_4_Template, 8, 2, "div", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HomeComponent_div_4_Template, 5, 2, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HomeComponent_div_5_Template, 8, 2, "div", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1731,11 +1765,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.pageLoading && ctx.userData.length === 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.userData);
         }
       },
-      directives: [_angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCard"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardContent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardTitle"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_9__["MatSpinner"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgSwitchCase"]],
-      styles: [".system[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n    border-bottom: 1px black solid;\n}\n\n.system[_ngcontent-%COMP%]   .content[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n    font-weight: bold;\n    padding-bottom: 5px;\n}\n\n.system[_ngcontent-%COMP%]   .content[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n    display:inline-block;\n}\n\n.infoWindow[_ngcontent-%COMP%] {\n    text-align:left;\n}\n\n.system[_ngcontent-%COMP%]   .map-button[_ngcontent-%COMP%] {\n    float:right;\n}\n\n.content[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%] {\n    padding:10px;\n    color: var(--gold);\n    vertical-align: top;\n    margin-top:35px;\n}\n\n.content[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    cursor: pointer;\n}\n\n.content[_ngcontent-%COMP%] {\n    padding: 5px 0;\n}\n\n@media only screen and (min-width: 600px) {\n    #footer[_ngcontent-%COMP%] {\n        display:inline;\n    }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw4QkFBOEI7QUFDbEM7O0FBRUE7SUFDSSxpQkFBaUI7SUFDakIsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0lBQ0ksY0FBYztBQUNsQjs7QUFFQTtJQUNJO1FBQ0ksY0FBYztJQUNsQjtBQUNKIiwiZmlsZSI6InNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3lzdGVtIGgyIHtcbiAgICBib3JkZXItYm90dG9tOiAxcHggYmxhY2sgc29saWQ7XG59XG5cbi5zeXN0ZW0gLmNvbnRlbnQgLnRpdGxlIHtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBwYWRkaW5nLWJvdHRvbTogNXB4O1xufVxuXG4uc3lzdGVtIC5jb250ZW50IHNwYW4ge1xuICAgIGRpc3BsYXk6aW5saW5lLWJsb2NrO1xufVxuXG4uaW5mb1dpbmRvdyB7XG4gICAgdGV4dC1hbGlnbjpsZWZ0O1xufVxuXG4uc3lzdGVtIC5tYXAtYnV0dG9uIHtcbiAgICBmbG9hdDpyaWdodDtcbn1cblxuLmNvbnRlbnQgLnN0YXIge1xuICAgIHBhZGRpbmc6MTBweDtcbiAgICBjb2xvcjogdmFyKC0tZ29sZCk7XG4gICAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgICBtYXJnaW4tdG9wOjM1cHg7XG59XG5cbi5jb250ZW50IC5zdGFyIGkge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbn1cblxuLmNvbnRlbnQge1xuICAgIHBhZGRpbmc6IDVweCAwO1xufVxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDYwMHB4KSB7XG4gICAgI2Zvb3RlciB7XG4gICAgICAgIGRpc3BsYXk6aW5saW5lO1xuICAgIH1cbn0iXX0= */"]
+      directives: [_angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCard"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardContent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCardTitle"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_9__["MatSpinner"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgSwitchCase"]],
+      styles: [".system[_ngcontent-%COMP%]   h2[_ngcontent-%COMP%] {\n    border-bottom: 1px black solid;\n}\n\n.system[_ngcontent-%COMP%]   .content[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n    font-weight: bold;\n    padding-bottom: 5px;\n}\n\n.system[_ngcontent-%COMP%]   .content[_ngcontent-%COMP%]   span[_ngcontent-%COMP%] {\n    display:inline-block;\n}\n\n.infoWindow[_ngcontent-%COMP%] {\n    text-align:left;\n}\n\n.system[_ngcontent-%COMP%]   .map-button[_ngcontent-%COMP%] {\n    float:right;\n}\n\n.content[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%] {\n    padding:10px;\n    color: var(--gold);\n    vertical-align: top;\n    margin-top:35px;\n}\n\n.content[_ngcontent-%COMP%]   .star[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n    cursor: pointer;\n}\n\n.content[_ngcontent-%COMP%] {\n    padding: 5px 0;\n}\n\na[_ngcontent-%COMP%] {\n    color:var(--link);\n    text-decoration: none;\n    border-bottom: 2px solid var(--link);\n    padding:1px;\n}\n\n.msg[_ngcontent-%COMP%] {\n    padding:25px;\n}\n\n@media only screen and (min-width: 600px) {\n    #footer[_ngcontent-%COMP%] {\n        display:inline;\n    }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9ob21lLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSw4QkFBOEI7QUFDbEM7O0FBRUE7SUFDSSxpQkFBaUI7SUFDakIsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksb0JBQW9CO0FBQ3hCOztBQUVBO0lBQ0ksZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsbUJBQW1CO0lBQ25CLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxlQUFlO0FBQ25COztBQUVBO0lBQ0ksY0FBYztBQUNsQjs7QUFFQTtJQUNJLGlCQUFpQjtJQUNqQixxQkFBcUI7SUFDckIsb0NBQW9DO0lBQ3BDLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSTtRQUNJLGNBQWM7SUFDbEI7QUFDSiIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN5c3RlbSBoMiB7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IGJsYWNrIHNvbGlkO1xufVxuXG4uc3lzdGVtIC5jb250ZW50IC50aXRsZSB7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gICAgcGFkZGluZy1ib3R0b206IDVweDtcbn1cblxuLnN5c3RlbSAuY29udGVudCBzcGFuIHtcbiAgICBkaXNwbGF5OmlubGluZS1ibG9jaztcbn1cblxuLmluZm9XaW5kb3cge1xuICAgIHRleHQtYWxpZ246bGVmdDtcbn1cblxuLnN5c3RlbSAubWFwLWJ1dHRvbiB7XG4gICAgZmxvYXQ6cmlnaHQ7XG59XG5cbi5jb250ZW50IC5zdGFyIHtcbiAgICBwYWRkaW5nOjEwcHg7XG4gICAgY29sb3I6IHZhcigtLWdvbGQpO1xuICAgIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gICAgbWFyZ2luLXRvcDozNXB4O1xufVxuXG4uY29udGVudCAuc3RhciBpIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi5jb250ZW50IHtcbiAgICBwYWRkaW5nOiA1cHggMDtcbn1cblxuYSB7XG4gICAgY29sb3I6dmFyKC0tbGluayk7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCB2YXIoLS1saW5rKTtcbiAgICBwYWRkaW5nOjFweDtcbn1cblxuLm1zZyB7XG4gICAgcGFkZGluZzoyNXB4O1xufVxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDYwMHB4KSB7XG4gICAgI2Zvb3RlciB7XG4gICAgICAgIGRpc3BsYXk6aW5saW5lO1xuICAgIH1cbn0iXX0= */"]
     });
     /*@__PURE__*/
 
@@ -2325,7 +2363,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             mapTypeId: google.maps.MapTypeId.ROADMAP
           };
           this.map = new google.maps.Map(document.getElementById('map'), mapProperties);
-          console.log('map is', this.map);
         }
       }, {
         key: "addMarkers",
@@ -2339,7 +2376,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.bikeshareDataService.mapStationInfoArr.forEach(function (station) {
             markerProperties['position'] = new google.maps.LatLng(station.lat, station.lon);
             _this14.markers[station.station_id] = new _marker_Model__WEBPACK_IMPORTED_MODULE_1__["Marker"](station.name, new google.maps.Marker(markerProperties));
-            console.log('added marker: ', _this14.markers[station.station_id]);
           });
         }
       }, {
@@ -2427,8 +2463,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this17 = this;
 
           this.bikeshareDataService.getStationInfo().subscribe(function (x) {
-            console.log('station info is', x);
-
             if (x === []) {
               _this17.handleError();
             } else {
@@ -2448,8 +2482,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this18 = this;
 
           this.bikeshareDataService.getStationStatus().subscribe(function (x) {
-            console.log('station status is', x);
-
             _this18.addMarkers();
 
             _this18.addInfoWindows();
