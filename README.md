@@ -1,27 +1,11 @@
-# Bikeshare
+# BikeshareBuddy
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.5.
+BikeshareBuddy is a web app that allows users to save and easily view their favorite bikeshare stations to find out if there are available bikes and/or docks. Users can search for a bikeshare system to see a map of all stations within the system. Click a station icon to see real-time information about the station. To save a station to your favorites, you must be logged in. 
 
-## Development server
+The search results are pulled directly from [the GBFS database](https://github.com/NABSA/gbfs/blob/master/systems.csv). If you see a system that doesn't exist anymore, or if you can't find a system that does exist, it is because the CSV has not been updated.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Known issues:
+- Many stations listed in the search results can not be viewed with BikeshareBuddy. If you click on an unavailable station, you will see an error message an be redirected. In most cases, this happens because the station requires an API key to view data.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Future enhancements:
+- Switch API to CityBikes or similar
