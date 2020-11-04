@@ -1,0 +1,108 @@
+{
+  "configVersion": 1,
+  "timestamp": 1604461308138,
+  "index": "/BikeshareBuddy/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/BikeshareBuddy/5-es2015.2f7b80da9833103e3868.js",
+        "/BikeshareBuddy/5-es5.2f7b80da9833103e3868.js",
+        "/BikeshareBuddy/favicon.ico",
+        "/BikeshareBuddy/index.html",
+        "/BikeshareBuddy/main-es2015.12310e57461e59e7185d.js",
+        "/BikeshareBuddy/main-es5.12310e57461e59e7185d.js",
+        "/BikeshareBuddy/manifest.webmanifest",
+        "/BikeshareBuddy/polyfills-es2015.690002c25ea8557bb4b0.js",
+        "/BikeshareBuddy/polyfills-es5.9e286f6d9247438cbb02.js",
+        "/BikeshareBuddy/runtime-es2015.249d13553f3ad317f3e7.js",
+        "/BikeshareBuddy/runtime-es5.249d13553f3ad317f3e7.js",
+        "/BikeshareBuddy/styles.706885a062e0b5cbcc0a.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/BikeshareBuddy/assets/bb_logo.svg",
+        "/BikeshareBuddy/assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg",
+        "/BikeshareBuddy/assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg",
+        "/BikeshareBuddy/assets/bg_images/morgan-von-gunten-Spx31sWjKZE-unsplash.jpg",
+        "/BikeshareBuddy/assets/bg_images/sebastian-herrmann-gPtOEPx_Cjw-unsplash.jpg",
+        "/BikeshareBuddy/assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg",
+        "/BikeshareBuddy/assets/bg_images/viviana-rishe-HukxHhrVeiM-unsplash.jpg",
+        "/BikeshareBuddy/assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg",
+        "/BikeshareBuddy/assets/dot.png",
+        "/BikeshareBuddy/assets/icons/icon-128x128.png",
+        "/BikeshareBuddy/assets/icons/icon-144x144.png",
+        "/BikeshareBuddy/assets/icons/icon-152x152.png",
+        "/BikeshareBuddy/assets/icons/icon-192x192.png",
+        "/BikeshareBuddy/assets/icons/icon-384x384.png",
+        "/BikeshareBuddy/assets/icons/icon-512x512.png",
+        "/BikeshareBuddy/assets/icons/icon-72x72.png",
+        "/BikeshareBuddy/assets/icons/icon-96x96.png",
+        "/BikeshareBuddy/assets/marker.png",
+        "/BikeshareBuddy/assets/place-24px.png",
+        "/BikeshareBuddy/assets/place-24px.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/BikeshareBuddy/5-es2015.2f7b80da9833103e3868.js": "4bd95cfdf128c6fadc1814101ef38378d84e1fbf",
+    "/BikeshareBuddy/5-es5.2f7b80da9833103e3868.js": "4bd95cfdf128c6fadc1814101ef38378d84e1fbf",
+    "/BikeshareBuddy/assets/bb_logo.svg": "4392edc066fa895cf36a1ec922d3533e6590ae68",
+    "/BikeshareBuddy/assets/bg_images/everton-vila-AsahNlC0VhQ-unsplash.jpg": "cb00d08bf31bc51fa66bbf73772eb86334de94b6",
+    "/BikeshareBuddy/assets/bg_images/julia-stepper-CeFDIMF4Bu4-unsplash.jpg": "8a1998d9a634782a05ca00af8be3f7075635c6e4",
+    "/BikeshareBuddy/assets/bg_images/morgan-von-gunten-Spx31sWjKZE-unsplash.jpg": "9475adcf0ba28fa8016a2a10a40b11ef5d929a59",
+    "/BikeshareBuddy/assets/bg_images/sebastian-herrmann-gPtOEPx_Cjw-unsplash.jpg": "fb0ffd9e4ac8bf37cfe8c7d3be6c38e34b658aeb",
+    "/BikeshareBuddy/assets/bg_images/victor-xok-Gi0OMNguFaw-unsplash.jpg": "92d818ace935777472b3047d78e59c90e57caab4",
+    "/BikeshareBuddy/assets/bg_images/viviana-rishe-HukxHhrVeiM-unsplash.jpg": "e25a9000535cd6b3167a594c44d7befc9429b3b2",
+    "/BikeshareBuddy/assets/bg_images/viviana-rishe-IOu70_yVBsA-unsplash.jpg": "94f0ce6ffa4211bec9d46f7f1c7993d6b30288e2",
+    "/BikeshareBuddy/assets/dot.png": "81c0f67b77bbdafb7b6edacbfc8c7dac3a99966f",
+    "/BikeshareBuddy/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/BikeshareBuddy/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/BikeshareBuddy/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/BikeshareBuddy/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/BikeshareBuddy/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/BikeshareBuddy/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/BikeshareBuddy/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/BikeshareBuddy/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/BikeshareBuddy/assets/marker.png": "d17c9d1f95ee59f65827cd4c16c68c8c09a62564",
+    "/BikeshareBuddy/assets/place-24px.png": "b6b0f15959f5fb6fd82da994f5b98c5b2c8d573d",
+    "/BikeshareBuddy/assets/place-24px.svg": "40d4f280f277a99eae15875137feec9066ca33da",
+    "/BikeshareBuddy/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/BikeshareBuddy/index.html": "67dad4534f7e4296dfbaab5fbc817fa51e7db30f",
+    "/BikeshareBuddy/main-es2015.12310e57461e59e7185d.js": "ac6832fa32b6cae66017fe53cd03edb9888f3439",
+    "/BikeshareBuddy/main-es5.12310e57461e59e7185d.js": "c6851fc669a7a868c3b9a13647cb821ffb178f7e",
+    "/BikeshareBuddy/manifest.webmanifest": "65f378817583636303241481db4dab9cbf6ba0db",
+    "/BikeshareBuddy/polyfills-es2015.690002c25ea8557bb4b0.js": "72ad4ccc0a3916ae4598199447cdeadd6d380570",
+    "/BikeshareBuddy/polyfills-es5.9e286f6d9247438cbb02.js": "89222a28dbabb780fc372d33834080e0cd3083d9",
+    "/BikeshareBuddy/runtime-es2015.249d13553f3ad317f3e7.js": "574487dd1d9e05d85a10984cc379f195f3874ee0",
+    "/BikeshareBuddy/runtime-es5.249d13553f3ad317f3e7.js": "d013ea660c3f623ef6c39690bc34f389fc06ce36",
+    "/BikeshareBuddy/styles.706885a062e0b5cbcc0a.css": "209c1aea22671341039ae2fa19f0df3f267a8a70"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
